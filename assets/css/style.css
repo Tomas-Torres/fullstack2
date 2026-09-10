@@ -114,3 +114,147 @@ body {
     color: #ff8080;
     margin-bottom: 0.75rem;
 }
+
+
+/* ===== FOOTER ===== */
+.footer-tienda {
+    background-color: var(--color-fondo-tarjeta);
+    border-top: 1px solid var(--color-morado-oscuro);
+}
+
+.footer-tienda h3,
+.footer-tienda h4 {
+    margin-bottom: 0.75rem;
+}
+
+.text-secundario {
+    color: var(--color-texto-secundario);
+}
+
+.lista-footer {
+    list-style: none;
+}
+
+.lista-footer a {
+    color: var(--color-texto-secundario);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.lista-footer a:hover {
+    color: var(--color-morado);
+}
+
+.form-boletin {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.form-boletin input {
+    flex: 1;
+    min-width: 150px;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--color-morado-oscuro);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+/* ===== FORMULARIOS (registro y login) ===== */
+.formulario-tienda {
+    background-color: var(--color-fondo-tarjeta);
+    border-radius: 8px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.campo-formulario {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.campo-formulario label {
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+}
+
+.campo-formulario input,
+.campo-formulario select {
+    padding: 0.6rem;
+    border-radius: 4px;
+    border: 1px solid var(--color-morado-oscuro);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+.campo-formulario .sugerencia {
+    font-size: 0.8rem;
+    color: var(--color-texto-secundario);
+    margin-top: 0.3rem;
+}
+
+.campo-formulario .error {
+    font-size: 0.8rem;
+    color: #ff5c5c;
+    margin-top: 0.3rem;
+    min-height: 1rem; /* reserva espacio para que el formulario no "salte" cuando aparece el error */
+}
+
+/* Cuando un campo tiene error, le ponemos borde rojo */
+.campo-formulario input.input-error,
+.campo-formulario select.input-error {
+    border-color: #ff5c5c;
+}
+
+/* ===== CARRITO ===== */
+.producto-carrito {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--color-fondo-tarjeta);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.producto-carrito img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.producto-carrito .info-producto {
+    flex: 1;
+}
+
+.control-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.control-cantidad button {
+    background-color: var(--color-morado);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 28px;
+    height: 28px;
+}
+
+.resumen-carrito {
+    background-color: var(--color-fondo-tarjeta);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.carrito-vacio {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--color-texto-secundario);
+}
