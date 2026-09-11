@@ -17,25 +17,22 @@ No requiere instalación ni servidor. Solo necesitas un navegador web (Chrome, E
    **Alternativa recomendada (VS Code):** abre la carpeta en VS Code, haz clic derecho sobre `index.html` y selecciona **"Open with Live Server"** (o "Show Preview"), para evitar problemas de rutas relativas.
 
 ## Estructura del proyecto
-
-```
 fullstack2/
 ├── assets/
-│   ├── css/
-│   │   └── style.css        → Estilos del sitio
-│   ├── js/
-│   │   ├── registro.js      → Validaciones del formulario de registro
-│   │   ├── login.js         → Validación de inicio de sesión
-│   │   ├── carrito.js       → Lógica de la vista carrito
-│   │   └── carrito-comun.js → Lógica de carrito compartida (contador, agregar productos)
-│   └── img/                 → Imágenes del sitio
-├── index.html                → Página de inicio (portada + catálogo)
-├── registro.html              → Registro de usuario
-├── login.html                  → Inicio de sesión
-├── carrito.html                → Carrito de compras
-├── ERS.md                      → Especificación de Requisitos de Software
-└── README.md                   → Este archivo
-```
+│ ├── css/
+│ │ └── style.css → Estilos del sitio
+│ ├── js/
+│ │ ├── registro.js → Validaciones del formulario de registro
+│ │ ├── login.js → Validación de inicio de sesión
+│ │ ├── carrito.js → Lógica de la vista carrito
+│ │ └── carrito-comun.js → Lógica de carrito compartida (contador, agregar productos)
+│ └── img/ → Imágenes del sitio
+├── index.html → Página de inicio (portada + catálogo)
+├── registro.html → Registro de usuario
+├── login.html → Inicio de sesión
+├── carrito.html → Carrito de compras
+├── ERS.md → Especificación de Requisitos de Software
+└── README.md → Este archivo
 
 ## Funcionalidades principales
 
@@ -54,4 +51,4 @@ fullstack2/
 
 ## Autor
 
-Tomás Torres
+Tomás Torres Delgado
