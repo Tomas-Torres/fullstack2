@@ -65,7 +65,6 @@ function activarBotonesCantidad() {
         return;
     }
 
-    // Si hay productos, vamos armando el HTML de cada uno
     let html = "";
     let total = 0;
 
