@@ -274,3 +274,22 @@ body {
         margin-top: 1.5rem;
     }
 }
+
+/* ===== PANEL DE ADMINISTRACIÓN ===== */
+.panel-admin {
+    background-color: var(--color-fondo-tarjeta);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.tabla-admin {
+    --bs-table-bg: var(--color-fondo-tarjeta);
+}
+
+.tabla-admin img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    background-color: #ffffff;
+    border-radius: 4px;
+}
