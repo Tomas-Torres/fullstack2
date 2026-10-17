@@ -70,6 +70,18 @@ No hay servidor: todo se guarda en el navegador con `localStorage`, y el estado 
 
 Para volver al estado inicial, abre las herramientas del navegador (F12), ve a **Application → Local Storage**, elimina las claves y recarga la página.
 
+### Pruebas unitarias
+
+Las pruebas usan Vitest y Testing Library, y están en la carpeta `level-up-react/tests`.
+
+| Comando | Qué hace |
+|---|---|
+| `npm run test` | Ejecuta las pruebas en modo observación |
+| `npm run test:ui` | Abre una interfaz visual de las pruebas |
+| `npm run test:coverage` | Ejecuta las pruebas y genera el reporte de cobertura |
+
+Resultado actual: 85 pruebas en 15 archivos, con una cobertura de líneas de 99,57% (el mínimo exigido es 60%). El reporte en HTML queda en `coverage/index.html`.
+
 ### Estructura de `level-up-react`
 
 ```
