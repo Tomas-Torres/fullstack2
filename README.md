@@ -90,11 +90,16 @@ level-up-react/
 ├── src/
 │   ├── components/          → Header, Footer, ProductCard, Campo, RutaAdmin
 │   ├── context/             → AuthContext, ProductosContext, CarritoContext
-│   ├── data/                → productosIniciales.js, regiones.js
-│   ├── pages/               → Home, Productos, Carrito, Login, Registro, Admin
+│   ├── data/                → ProductosIniciales.js, regiones.js
+│   ├── pages/               → Home, Productos, Categorias, Ofertas, ProductoDetalle, Carrito, Checkout, CompraExitosa, CompraFallida, Login, Registro, Admin
+│   ├── utils/               → precios.js
 │   ├── App.jsx              → Definición de rutas
 │   ├── main.jsx             → Punto de entrada y proveedores de contexto
 │   └── index.css            → Estilos propios (paleta oscura con acentos morados)
+├── tests/                   → Pruebas unitarias (Jasmine + Karma)
+├── karma.conf.cjs
+├── generar-cobertura.cjs
+├── TESTING.md
 ├── index.html
 └── package.json
 ```
