@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react'
 import { ProductosProvider, useProductos } from '../../src/context/ProductosContext'
-import { productosIniciales } from '../../src/data/productosIniciales'
+import { productosIniciales } from '../../src/data/ProductosIniciales'
 
 const wrapper = ({ children }) => <ProductosProvider>{children}</ProductosProvider>
 

@@ -65,7 +65,7 @@ describe('Panel Admin (CRUD de productos)', () => {
   })
 
   it('DELETE: elimina un producto si se confirma', async () => {
-    vi.spyOn(window, 'confirm').mockReturnValue(true)
+    spyOn(window, 'confirm').and.returnValue(true)
     renderConProveedores(<Admin />)
     await userEvent.click(screen.getAllByRole('button', { name: 'Eliminar' })[0])
     expect(screen.getByRole('heading', { name: 'Productos (7)' })).toBeInTheDocument()
@@ -73,7 +73,7 @@ describe('Panel Admin (CRUD de productos)', () => {
   })
 
   it('DELETE: no elimina nada si se cancela la confirmación', async () => {
-    vi.spyOn(window, 'confirm').mockReturnValue(false)
+    spyOn(window, 'confirm').and.returnValue(false)
     renderConProveedores(<Admin />)
     await userEvent.click(screen.getAllByRole('button', { name: 'Eliminar' })[0])
     expect(screen.getByRole('heading', { name: 'Productos (8)' })).toBeInTheDocument()

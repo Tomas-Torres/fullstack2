@@ -32,4 +32,37 @@ describe('Página Productos', () => {
     expect(carrito).toHaveLength(1)
     expect(carrito[0].cantidad).toBe(2)
   })
+
+  it('filtra por categoría cuando llega por la URL', () => {
+    renderConProveedores(<Productos />, { ruta: '/productos?categoria=Juegos%20de%20Mesa' })
+    expect(screen.getAllByRole('article')).toHaveLength(2)
+    expect(screen.getByRole('button', { name: 'Todas' })).toBeInTheDocument()
+    expect(screen.getByText(/2 resultados en Juegos de Mesa/)).toBeInTheDocument()
+  })
+
+  it('filtra por búsqueda cuando llega por la URL', () => {
+    renderConProveedores(<Productos />, { ruta: '/productos?q=catan' })
+    expect(screen.getAllByRole('article')).toHaveLength(1)
+    expect(screen.getByRole('heading', { name: 'Catan' })).toBeInTheDocument()
+  })
+
+  it('muestra el estado vacío si la búsqueda no tiene coincidencias', () => {
+    renderConProveedores(<Productos />, { ruta: '/productos?q=noexistente' })
+    expect(screen.getByText('No encontramos productos que coincidan con tu búsqueda.')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Ver todo el catálogo' })).toBeInTheDocument()
+  })
+
+  it('filtra al presionar un botón de categoría', async () => {
+    renderConProveedores(<Productos />)
+    await userEvent.click(screen.getByRole('button', { name: 'Videojuegos' }))
+    expect(screen.getAllByRole('article')).toHaveLength(1)
+    expect(screen.getByRole('heading', { name: 'GTA6 (Versión Digital)' })).toBeInTheDocument()
+  })
+
+  it('limpia los filtros con el botón correspondiente', async () => {
+    renderConProveedores(<Productos />, { ruta: '/productos?q=catan' })
+    expect(screen.getAllByRole('article')).toHaveLength(1)
+    await userEvent.click(screen.getByRole('button', { name: 'Limpiar filtros' }))
+    expect(screen.getAllByRole('article')).toHaveLength(8)
+  })
 })

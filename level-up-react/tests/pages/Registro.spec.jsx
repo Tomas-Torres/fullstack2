@@ -28,7 +28,7 @@ const enviar = () => userEvent.click(screen.getByRole('button', { name: 'Registr
 
 describe('Página Registro', () => {
   beforeEach(() => {
-    vi.spyOn(window, 'alert').mockImplementation(() => {})
+    spyOn(window, 'alert')
   })
 
   it('muestra un error junto a cada campo si se envía vacío', async () => {

@@ -1,39 +1,24 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useCarrito } from '../context/CarritoContext'
-
-const CUPONES = { LEVELUP10: 0.1, GAMER20: 0.2 }
+import { formatoCLP } from '../utils/precios'
 
 function Carrito() {
-  const { carrito, cambiarCantidad, vaciarCarrito, total } = useCarrito()
-  const [cupon, setCupon] = useState('')
-  const [descuento, setDescuento] = useState(0)
+  const { carrito, cambiarCantidad, cupon, aplicarCupon, total, totalDescuento, totalFinal } = useCarrito()
+  const [codigoCupon, setCodigoCupon] = useState('')
   const [mensajeCupon, setMensajeCupon] = useState({ texto: '', ok: false })
+  const navigate = useNavigate()
 
-  const formato = (n) => '$' + n.toLocaleString('es-CL')
-  const totalFinal = total - total * descuento
-
-  const aplicarCupon = () => {
-    const codigo = cupon.trim().toUpperCase()
-    if (CUPONES[codigo]) {
-      setDescuento(CUPONES[codigo])
-      setMensajeCupon({ texto: `¡Cupón aplicado! Descuento del ${CUPONES[codigo] * 100}%.`, ok: true })
-    } else {
-      setDescuento(0)
-      setMensajeCupon({ texto: 'Cupón inválido.', ok: false })
-    }
+  const handleAplicarCupon = () => {
+    setMensajeCupon(aplicarCupon(codigoCupon))
   }
 
-  const pagar = () => {
+  const irAlCheckout = () => {
     if (carrito.length === 0) {
       alert('Tu carrito está vacío. Agrega productos antes de pagar.')
       return
     }
-    alert('¡Compra simulada con éxito! Gracias por tu compra en Level-Up Gamer.')
-    vaciarCarrito()
-    setCupon('')
-    setDescuento(0)
-    setMensajeCupon({ texto: '', ok: false })
+    navigate('/checkout')
   }
 
   return (
@@ -53,14 +38,14 @@ function Carrito() {
                 <img src={item.imagen} alt={item.nombre} />
                 <div className="info-producto">
                   <h3>{item.nombre}</h3>
-                  <p>{formato(item.precio)} c/u</p>
+                  <p>{formatoCLP(item.precio)} c/u</p>
                 </div>
                 <div className="control-cantidad">
-                  <button onClick={() => cambiarCantidad(item.id, -1)}>−</button>
+                  <button aria-label={`Quitar una unidad de ${item.nombre}`} onClick={() => cambiarCantidad(item.id, -1)}>−</button>
                   <span>{item.cantidad}</span>
-                  <button onClick={() => cambiarCantidad(item.id, 1)}>+</button>
+                  <button aria-label={`Agregar una unidad de ${item.nombre}`} onClick={() => cambiarCantidad(item.id, 1)}>+</button>
                 </div>
-                <strong>{formato(item.precio * item.cantidad)}</strong>
+                <strong>{formatoCLP(item.precio * item.cantidad)}</strong>
               </article>
             ))
           )}
@@ -69,8 +54,8 @@ function Carrito() {
         <div className="col-12 col-md-4">
           <div className="resumen-carrito">
             <p className="d-flex justify-content-between">
-              <span>Total:</span>
-              <strong>{formato(totalFinal)}</strong>
+              <span>Subtotal:</span>
+              <span>{formatoCLP(total)}</span>
             </p>
 
             <div className="campo-formulario">
@@ -80,17 +65,29 @@ function Carrito() {
                   type="text"
                   id="cupon"
                   placeholder="Ingresa tu cupón"
-                  value={cupon}
-                  onChange={(e) => setCupon(e.target.value)}
+                  value={codigoCupon}
+                  onChange={(e) => setCodigoCupon(e.target.value)}
                 />
-                <button className="btn btn-outline-light" onClick={aplicarCupon}>Aplicar</button>
+                <button className="btn btn-outline-light" onClick={handleAplicarCupon}>Aplicar</button>
               </div>
               <span className="error" style={{ color: mensajeCupon.ok ? 'lightgreen' : '#ff5c5c' }}>
                 {mensajeCupon.texto}
               </span>
             </div>
 
-            <button className="btn btn-morado w-100 mt-3" onClick={pagar}>Pagar</button>
+            {cupon && (
+              <p className="d-flex justify-content-between text-success">
+                <span>Cupón {cupon.codigo} (-{cupon.porcentaje * 100}%):</span>
+                <span>-{formatoCLP(totalDescuento)}</span>
+              </p>
+            )}
+
+            <p className="d-flex justify-content-between fs-5 border-top pt-2">
+              <span>Total:</span>
+              <strong>{formatoCLP(totalFinal)}</strong>
+            </p>
+
+            <button className="btn btn-morado w-100 mt-3" onClick={irAlCheckout}>Pagar</button>
           </div>
         </div>
       </div>

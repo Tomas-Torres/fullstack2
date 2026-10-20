@@ -36,6 +36,21 @@ body {
     color: var(--color-morado);
 }
 
+.buscador-header input {
+    padding: 0.35rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid var(--color-morado-oscuro);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    min-width: 160px;
+}
+
+@media (max-width: 992px) {
+    .header-fila {
+        justify-content: center !important;
+    }
+}
+
 /* ===== HERO ===== */
 .hero-texto h1 {
     font-size: 2.5rem;
@@ -102,6 +117,59 @@ body {
     font-size: 0.75rem;
     color: #ff8080;
     margin-bottom: 0.75rem;
+}
+
+/* ===== OFERTAS ===== */
+.etiqueta-oferta {
+    display: inline-block;
+    background-color: #1f8a4c;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.precio-antes {
+    color: var(--color-texto-secundario);
+    font-weight: normal;
+    margin-right: 0.4rem;
+}
+
+.link-producto {
+    color: var(--color-texto);
+    text-decoration: none;
+}
+
+.link-producto:hover {
+    color: var(--color-morado);
+}
+
+/* ===== CATEGORÍAS ===== */
+.tarjeta-categoria {
+    background-color: var(--color-fondo-tarjeta);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 1.5rem 1rem;
+    color: var(--color-texto);
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.tarjeta-categoria:hover {
+    border-color: var(--color-morado);
+    color: var(--color-texto);
+    transform: translateY(-3px);
+}
+
+.tarjeta-categoria h3 {
+    font-size: 1rem;
+    margin: 0.5rem 0 0.25rem;
+}
+
+.icono-categoria {
+    font-size: 2rem;
 }
 
 /* ===== VIDEO ===== */
@@ -292,4 +360,105 @@ body {
     object-fit: contain;
     background-color: #ffffff;
     border-radius: 4px;
+}
+
+/* ===== FILTROS DEL CATÁLOGO ===== */
+.filtros-catalogo .btn {
+    border-color: var(--color-morado-oscuro);
+}
+
+/* ===== DETALLE DE PRODUCTO ===== */
+.detalle-producto .producto-card img {
+    height: auto;
+    max-height: 420px;
+}
+
+.precio-detalle {
+    font-size: 1.5rem;
+    margin: 0.75rem 0;
+}
+
+.stock-disponible {
+    color: #7bd88f;
+    font-size: 0.9rem;
+}
+
+.descripcion {
+    color: var(--color-texto-secundario);
+    line-height: 1.6;
+}
+
+.breadcrumb {
+    --bs-breadcrumb-item-active-color: var(--color-texto-secundario);
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.breadcrumb a {
+    color: var(--color-morado);
+    text-decoration: none;
+}
+
+/* ===== CHECKOUT ===== */
+.opciones-entrega {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.opcion-entrega {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-morado-oscuro);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+}
+
+.opcion-entrega.seleccionada {
+    border-color: var(--color-morado);
+    background-color: rgba(108, 60, 233, 0.12);
+}
+
+.opcion-entrega input[type='radio'] {
+    accent-color: var(--color-morado);
+}
+
+.opcion-entrega .nombre-opcion {
+    flex: 1;
+}
+
+.opcion-entrega .costo-opcion {
+    font-weight: bold;
+}
+
+.lista-resumen {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--color-texto-secundario);
+}
+
+.lista-resumen li {
+    margin-bottom: 0.4rem;
+}
+
+/* ===== COMPRA EXITOSA / FALLIDA ===== */
+.icono-exito {
+    font-size: 3rem;
+}
+
+.icono-error {
+    font-size: 3rem;
+}
+
+.orden-numero {
+    color: var(--color-morado);
+    font-weight: bold;
 }

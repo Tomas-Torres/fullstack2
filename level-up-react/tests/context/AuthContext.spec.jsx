@@ -47,7 +47,7 @@ describe('AuthContext', () => {
     act(() => {
       respuesta = result.current.login('nadie@correo.com', 'Clave123!')
     })
-    expect(respuesta).toMatchObject({ ok: false, campo: 'correo' })
+    expect(respuesta).toEqual(jasmine.objectContaining({ ok: false, campo: 'correo' }))
   })
 
   it('informa cuando la contraseña es incorrecta', () => {
@@ -56,7 +56,7 @@ describe('AuthContext', () => {
     act(() => {
       respuesta = result.current.login('admin@levelup.cl', 'ClaveMala1!')
     })
-    expect(respuesta).toMatchObject({ ok: false, campo: 'password' })
+    expect(respuesta).toEqual(jasmine.objectContaining({ ok: false, campo: 'password' }))
   })
 
   it('inicia sesión y reconoce al administrador', () => {

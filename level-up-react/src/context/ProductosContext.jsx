@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { productosIniciales } from '../data/productosIniciales'
+import { productosIniciales } from '../data/ProductosIniciales'
 
 const ProductosContext = createContext()
 

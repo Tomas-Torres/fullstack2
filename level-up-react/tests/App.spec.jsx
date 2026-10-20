@@ -38,4 +38,45 @@ describe('App (rutas)', () => {
     renderConProveedores(<App />, { ruta: '/admin' })
     expect(screen.getByRole('heading', { name: 'Panel de administración' })).toBeInTheDocument()
   })
+
+  it('muestra las categorías en /categorias', () => {
+    renderConProveedores(<App />, { ruta: '/categorias' })
+    expect(screen.getByRole('heading', { level: 2, name: 'Categorías' })).toBeInTheDocument()
+  })
+
+  it('muestra las ofertas en /ofertas', () => {
+    renderConProveedores(<App />, { ruta: '/ofertas' })
+    expect(screen.getByRole('heading', { level: 2, name: 'Ofertas' })).toBeInTheDocument()
+  })
+
+  it('muestra el detalle del producto en /producto/:id', () => {
+    renderConProveedores(<App />, { ruta: '/producto/catan' })
+    expect(screen.getByRole('heading', { level: 1, name: 'Catan' })).toBeInTheDocument()
+  })
+
+  it('muestra el aviso de producto inexistente en /producto/:id', () => {
+    renderConProveedores(<App />, { ruta: '/producto/noexiste' })
+    expect(screen.getByRole('heading', { name: 'Producto no encontrado' })).toBeInTheDocument()
+  })
+
+  it('filtra el catálogo con los parámetros de la URL', () => {
+    renderConProveedores(<App />, { ruta: '/productos?q=catan' })
+    expect(screen.getAllByRole('article')).toHaveLength(1)
+    expect(screen.getByRole('heading', { name: 'Catan' })).toBeInTheDocument()
+  })
+
+  it('muestra el aviso de carrito vacío en /checkout', () => {
+    renderConProveedores(<App />, { ruta: '/checkout' })
+    expect(screen.getByRole('heading', { name: 'No hay nada que pagar' })).toBeInTheDocument()
+  })
+
+  it('muestra el estado vacío de /compra-exitosa', () => {
+    renderConProveedores(<App />, { ruta: '/compra-exitosa' })
+    expect(screen.getByRole('heading', { name: 'No hay compras recientes' })).toBeInTheDocument()
+  })
+
+  it('muestra la compra fallida en /compra-fallida', () => {
+    renderConProveedores(<App />, { ruta: '/compra-fallida' })
+    expect(screen.getByRole('heading', { level: 1, name: 'No se pudo realizar el pago' })).toBeInTheDocument()
+  })
 })

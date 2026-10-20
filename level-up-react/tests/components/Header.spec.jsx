@@ -1,7 +1,26 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { renderConProveedores } from '../utils'
 import Header from '../../src/components/Header'
+
+// Pantalla destino del buscador: muestra la query recibida para poder asertarla.
+function PantallaProductos() {
+  const location = useLocation()
+  return <h1>Catálogo: {location.search}</h1>
+}
+
+function renderHeader() {
+  return renderConProveedores(
+    <>
+      <Header />
+      <Routes>
+        <Route path="/productos" element={<PantallaProductos />} />
+      </Routes>
+    </>,
+    { ruta: '/' }
+  )
+}
 
 const admin = { nombre: 'Administrador', correo: 'admin@levelup.cl', rol: 'admin' }
 
@@ -46,5 +65,24 @@ describe('Header', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Cerrar sesión' }))
     expect(screen.getByRole('link', { name: 'Iniciar sesión' })).toBeInTheDocument()
     expect(localStorage.getItem('usuarioActivo')).toBeNull()
+  })
+
+  it('muestra los accesos a categorías y ofertas', () => {
+    renderConProveedores(<Header />)
+    expect(screen.getByRole('link', { name: 'Categorías' })).toHaveAttribute('href', '/categorias')
+    expect(screen.getByRole('link', { name: 'Ofertas' })).toHaveAttribute('href', '/ofertas')
+  })
+
+  it('el buscador lleva al catálogo con la query ingresada', async () => {
+    renderHeader()
+    await userEvent.type(screen.getByLabelText('Buscar productos'), 'catan')
+    await userEvent.click(screen.getByRole('button', { name: 'Buscar' }))
+    expect(await screen.findByText('Catálogo: ?q=catan')).toBeInTheDocument()
+  })
+
+  it('el buscador vacío lleva al catálogo completo', async () => {
+    renderHeader()
+    await userEvent.click(screen.getByRole('button', { name: 'Buscar' }))
+    expect(await screen.findByText('Catálogo:')).toBeInTheDocument()
   })
 })
