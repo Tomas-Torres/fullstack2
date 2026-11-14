@@ -1,7 +1,6 @@
-const fs = require('fs')
+﻿const fs = require('fs')
 const createEsbuildPreprocessor = require('./karma.pp.cjs')
 
-// Busca un navegador Chromium disponible (Chrome o Edge, que es lo que hay en Windows).
 if (!process.env.CHROME_BIN) {
   const candidatos = [
     'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
@@ -47,7 +46,6 @@ module.exports = function (config) {
       },
     },
     client: {
-      // Orden fijo para que los resultados sean reproducibles al presentar.
       jasmine: { random: false },
     },
     singleRun: true,

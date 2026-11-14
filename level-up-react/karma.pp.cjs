@@ -1,9 +1,8 @@
-const path = require('path')
+﻿const path = require('path')
 const esbuild = require('esbuild')
 
-// Preprocesador esbuild para Karma: compila JSX por archivo de test
 module.exports = function createEsbuildPreprocessor(logger) {
-  const log = logger.create('preprocessor.esbuild')
+  const log = logger.create ? logger.create('preprocessor.esbuild') : logger
   const conCobertura = process.argv.includes('--coverage')
   return function (contenido, archivo, done) {
     esbuild
@@ -32,13 +31,13 @@ module.exports = function createEsbuildPreprocessor(logger) {
           try {
             archivo.sourceMap = JSON.parse(Buffer.from(coincidencia[1], 'base64').toString('utf8'))
           } catch (e) {
-            log.error(e.message)
+            if (log && log.error) log.error(e.message)
           }
         }
         done(null, coincidencia ? js.text.replace(coincidencia[0], '') : js.text)
       })
       .catch((error) => {
-        log(error.message)
+        if (log && log.error) log.error(error.message)
         done(error, null)
       })
   }
