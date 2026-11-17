@@ -22,8 +22,8 @@
     <module>comun</module>
     <module>ms-login</module>
     <module>ms-productos</module>
+    <module>ms-carrito</module>
     <module>ms-pagos</module>
-    <module>ms-reportes</module>
   </modules>
 
   <properties>
