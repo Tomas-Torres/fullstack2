@@ -2,16 +2,25 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useCarrito } from '../context/CarritoContext'
+import { pagosApi } from '../api/cliente'
 import { regiones } from '../data/regiones'
 import { ENTREGAS, formatoCLP } from '../utils/precios'
 import Campo from '../components/Campo'
 
 const REGEX_CORREO = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const REGEX_TELEFONO = /^(\+56\s?9\s?\d{4}\s?\d{4}|9\d{8})$/
+const REGEX_TARJETA = /^\d{16}$/
+
+const METODOS = [
+  { id: 'TARJETA_CREDITO', nombre: 'Tarjeta de crédito' },
+  { id: 'TARJETA_DEBITO', nombre: 'Tarjeta de débito' },
+  { id: 'TRANSFERENCIA', nombre: 'Transferencia bancaria' },
+]
 
 const vacio = {
   nombre: '', correo: '', telefono: '', direccion: '', numero: '',
-  region: '', comuna: '', entrega: '', simularError: false,
+  region: '', comuna: '', entrega: '',
+  metodo: 'TARJETA_CREDITO', numeroTarjeta: '',
 }
 
 function validar(d) {
@@ -25,81 +34,115 @@ function validar(d) {
   if (d.region === '') e.region = 'Debes seleccionar una región.'
   if (d.comuna === '') e.comuna = 'Debes seleccionar una comuna.'
   if (d.entrega === '') e.entrega = 'Elige una opción de entrega.'
+
+  // Solo las tarjetas exigen número; la transferencia se aprueba directo.
+  if (d.metodo !== 'TRANSFERENCIA') {
+    const limpio = d.numeroTarjeta.replace(/\s/g, '')
+    if (!REGEX_TARJETA.test(limpio)) e.numeroTarjeta = 'Ingresa los 16 dígitos de tu tarjeta.'
+  }
   return e
 }
 
 function Checkout() {
   const { carrito, total, totalDescuento, cupon, vaciarCarrito } = useCarrito()
-  const { usuarioActivo, usuarios } = useAuth()
+  const { usuarioActivo, token } = useAuth()
   const navigate = useNavigate()
-  const [datos, setDatos] = useState(() => {
-    // Si hay sesión iniciada, la dirección se autocompleta con los datos del usuario.
-    if (usuarioActivo) {
-      const completo = usuarios.find((u) => u.correo === usuarioActivo.correo)
-      if (completo) {
-        return {
-          ...vacio,
-          nombre: completo.nombre,
-          correo: completo.correo,
-          telefono: completo.telefono || '',
-          region: completo.region || '',
-          comuna: completo.comuna || '',
-        }
-      }
-    }
-    return vacio
-  })
+  const [datos, setDatos] = useState(() => ({
+    ...vacio,
+    nombre: usuarioActivo?.nombre || '',
+    correo: usuarioActivo?.correo || '',
+    telefono: usuarioActivo?.telefono || '',
+    region: usuarioActivo?.region || '',
+    comuna: usuarioActivo?.comuna || '',
+  }))
   const [errores, setErrores] = useState({})
+  const [errorPago, setErrorPago] = useState('')
+  const [procesando, setProcesando] = useState(false)
 
   const comunas = regiones.find((r) => r.id === datos.region)?.comunas || []
   const opcionEntrega = ENTREGAS.find((op) => op.id === datos.entrega)
   const costoEnvio = opcionEntrega ? opcionEntrega.costo : 0
   const totalPagar = total - totalDescuento + costoEnvio
+  const esTarjeta = datos.metodo !== 'TRANSFERENCIA'
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target
+    const { name, value } = e.target
     setDatos((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: value,
       ...(name === 'region' ? { comuna: '' } : {}),
     }))
   }
 
-  const procesarPago = () => {
+  const procesarPago = async () => {
     const nuevosErrores = validar(datos)
     setErrores(nuevosErrores)
+    setErrorPago('')
     if (Object.keys(nuevosErrores).length > 0) return
 
-    // Modo demo: permite mostrar el flujo de pago fallido sin un backend real.
-    if (datos.simularError) {
-      navigate('/compra-fallida')
-      return
-    }
+    setProcesando(true)
+    try {
+      // No existe ms-ordenes: usamos un identificador simbólico para el cobro.
+      const ordenId = Date.now()
+      const pago = await pagosApi.registrar(token, {
+        ordenId,
+        monto: totalPagar,
+        metodo: datos.metodo,
+        numeroTarjeta: esTarjeta ? datos.numeroTarjeta.replace(/\s/g, '') : null,
+      })
 
-    const orden = {
-      numero: 'LV-' + Date.now(),
-      fecha: new Date().toLocaleString('es-CL'),
-      productos: carrito,
-      subtotal: total,
-      descuento: totalDescuento,
-      cupon: cupon ? cupon.codigo : null,
-      envio: costoEnvio,
-      total: totalPagar,
-      direccion: {
-        nombre: datos.nombre.trim(),
-        correo: datos.correo.trim(),
-        telefono: datos.telefono.trim(),
-        calle: datos.direccion.trim(),
-        numero: datos.numero.trim(),
-        region: datos.region,
-        comuna: datos.comuna,
-      },
-      entrega: opcionEntrega.nombre,
-    }
+      const resumenPago = {
+        estado: pago.estado,
+        metodo: pago.metodo,
+        ultimosDigitos: pago.ultimosDigitos,
+        codigoTransaccion: pago.codigoTransaccion,
+      }
 
-    localStorage.setItem('ultimaCompra', JSON.stringify(orden))
-    vaciarCarrito()
-    navigate('/compra-exitosa')
+      if (pago.estado !== 'APROBADO') {
+        localStorage.setItem(
+          'ultimoPagoRechazado',
+          JSON.stringify({
+            monto: pago.monto,
+            motivo: pago.motivoRechazo || 'El pago fue rechazado.',
+            codigoTransaccion: pago.codigoTransaccion,
+          })
+        )
+        navigate('/compra-fallida')
+        return
+      }
+
+      const orden = {
+        numero: 'LV-' + ordenId,
+        ordenId,
+        fecha: new Date().toLocaleString('es-CL'),
+        productos: carrito,
+        subtotal: total,
+        descuento: totalDescuento,
+        cupon: cupon ? cupon.codigo : null,
+        envio: costoEnvio,
+        total: totalPagar,
+        direccion: {
+          nombre: datos.nombre.trim(),
+          correo: datos.correo.trim(),
+          telefono: datos.telefono.trim(),
+          calle: datos.direccion.trim(),
+          numero: datos.numero.trim(),
+          region: datos.region,
+          comuna: datos.comuna,
+        },
+        entrega: opcionEntrega.nombre,
+        pago: resumenPago,
+      }
+
+      localStorage.removeItem('ultimoPagoRechazado')
+      localStorage.setItem('ultimaCompra', JSON.stringify(orden))
+      await vaciarCarrito()
+      navigate('/compra-exitosa')
+    } catch (fallo) {
+      setErrorPago(fallo.message)
+    } finally {
+      setProcesando(false)
+    }
   }
 
   const handleSubmit = (e) => {
@@ -120,6 +163,22 @@ function Checkout() {
     )
   }
 
+  // El cobro se hace contra ms-pagos, que exige un JWT válido.
+  if (!token || !usuarioActivo) {
+    return (
+      <main className="px-4 py-5">
+        <div className="carrito-vacio">
+          <h2>Inicia sesión para pagar</h2>
+          <p>Para cobrar tu compra necesitamos identificar tu cuenta.</p>
+          <div className="d-flex gap-2 justify-content-center flex-wrap">
+            <Link to="/login" className="btn btn-morado">Iniciar sesión</Link>
+            <Link to="/registro" className="btn btn-outline-light">Crear cuenta</Link>
+          </div>
+        </div>
+      </main>
+    )
+  }
+
   return (
     <main className="px-4 py-5">
       <h1 className="mb-4">Finalizar compra</h1>
@@ -129,9 +188,7 @@ function Checkout() {
           <form className="panel-admin" onSubmit={handleSubmit} noValidate>
             <h2 className="mb-3">Datos de envío</h2>
 
-            {usuarioActivo && (
-              <p className="text-secundario small">Completamos tus datos porque tienes sesión iniciada.</p>
-            )}
+            <p className="text-secundario small">Completamos tus datos porque tienes sesión iniciada.</p>
 
             <Campo id="nombre" label="Nombre completo" type="text" placeholder="Ej: Juan Pérez"
               value={datos.nombre} onChange={handleChange} error={errores.nombre} />
@@ -197,6 +254,37 @@ function Checkout() {
               ))}
               <span className="error">{errores.entrega}</span>
             </fieldset>
+
+            <h2 className="mb-3 mt-4">Medio de pago</h2>
+            <fieldset className="opciones-entrega">
+              <legend className="visually-hidden">Elige tu medio de pago</legend>
+              {METODOS.map((metodo) => (
+                <label key={metodo.id} className={`opcion-entrega ${datos.metodo === metodo.id ? 'seleccionada' : ''}`}>
+                  <input
+                    type="radio"
+                    name="metodo"
+                    value={metodo.id}
+                    checked={datos.metodo === metodo.id}
+                    onChange={handleChange}
+                  />
+                  <span className="nombre-opcion">{metodo.nombre}</span>
+                  <span className="costo-opcion">
+                    {metodo.id === 'TRANSFERENCIA' ? 'Aprobación inmediata' : 'Débito inmediato'}
+                  </span>
+                </label>
+              ))}
+            </fieldset>
+
+            {esTarjeta && (
+              <div className="mt-2">
+                <Campo id="numeroTarjeta" label="Número de tarjeta" type="text"
+                  placeholder="Ej: 4111 1111 1111 1234" inputMode="numeric"
+                  value={datos.numeroTarjeta} onChange={handleChange} error={errores.numeroTarjeta}
+                  sugerencia="Prueba terminando en 0000 (fondos insuficientes) o 1111 (rechazada)." />
+              </div>
+            )}
+
+            {errorPago && <div className="alert alert-danger py-2 mt-3">{errorPago}</div>}
           </form>
         </div>
 
@@ -229,18 +317,12 @@ function Checkout() {
               <span>Total:</span> <strong>{formatoCLP(totalPagar)}</strong>
             </p>
 
-            <label className={`opcion-entrega ${datos.simularError ? 'seleccionada' : ''} mt-3`}>
-              <input
-                type="checkbox"
-                id="simular-error"
-                name="simularError"
-                checked={datos.simularError}
-                onChange={handleChange}
-              />
-              <span className="nombre-opcion">Simular un error de pago (demo)</span>
-            </label>
-
-            <button className="btn btn-morado w-100 mt-3" onClick={procesarPago}>Pagar</button>
+            <button className="btn btn-morado w-100 mt-3" onClick={procesarPago} disabled={procesando}>
+              {procesando ? 'Procesando pago...' : 'Pagar'}
+            </button>
+            <p className="text-secundario small mt-2 mb-0">
+              El cobro es simulado: no se descuenta dinero real.
+            </p>
           </div>
         </div>
       </div>

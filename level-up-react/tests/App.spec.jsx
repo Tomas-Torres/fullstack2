@@ -50,7 +50,7 @@ describe('App (rutas)', () => {
   })
 
   it('muestra el detalle del producto en /producto/:id', () => {
-    renderConProveedores(<App />, { ruta: '/producto/catan' })
+    renderConProveedores(<App />, { ruta: '/producto/1' })
     expect(screen.getByRole('heading', { level: 1, name: 'Catan' })).toBeInTheDocument()
   })
 

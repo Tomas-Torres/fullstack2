@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event'
 import { Routes, Route } from 'react-router-dom'
 import { renderConProveedores } from '../utils'
 import Login from '../../src/pages/Login'
+import { instalarBackend } from '../fakeBackend'
 
 function renderLogin() {
   return renderConProveedores(
@@ -22,6 +23,10 @@ async function ingresar(correo, password) {
 }
 
 describe('Página Login', () => {
+  beforeEach(() => {
+    instalarBackend()
+  })
+
   it('pide correo y contraseña si se envía vacío', async () => {
     renderLogin()
     await ingresar('', '')
@@ -38,13 +43,13 @@ describe('Página Login', () => {
   it('informa que la cuenta no existe', async () => {
     renderLogin()
     await ingresar('nadie@correo.com', 'Clave123!')
-    expect(screen.getByText('No existe una cuenta con este correo.')).toBeInTheDocument()
+    expect(await screen.findByText('No existe una cuenta con este correo.')).toBeInTheDocument()
   })
 
   it('informa que la contraseña es incorrecta', async () => {
     renderLogin()
     await ingresar('admin@levelup.cl', 'ClaveMala1!')
-    expect(screen.getByText('Contraseña incorrecta.')).toBeInTheDocument()
+    expect(await screen.findByText('Contraseña incorrecta.')).toBeInTheDocument()
   })
 
   it('el administrador entra y es enviado al panel', async () => {
@@ -54,14 +59,17 @@ describe('Página Login', () => {
   })
 
   it('un cliente entra y es enviado al inicio', async () => {
-    localStorage.setItem(
-      'usuarios',
-      JSON.stringify([
-        { nombre: 'Ana Pérez', correo: 'ana@correo.com', password: 'Clave123!', telefono: '', region: 'metropolitana', comuna: 'Santiago', rol: 'cliente' },
-      ])
-    )
     renderLogin()
-    await ingresar('ana@correo.com', 'Clave123!')
+    await ingresar('cliente.pagos@levelup.cl', 'Cliente123!')
     expect(await screen.findByText('Página de inicio')).toBeInTheDocument()
+  })
+
+  it('muestra un aviso general si el servicio de login no responde', async () => {
+    window.fetch = () => Promise.reject(new Error('sin red'))
+    renderLogin()
+    await ingresar('admin@levelup.cl', 'Admin123!')
+    expect(
+      await screen.findByText(/No pudimos conectar con el servidor/)
+    ).toBeInTheDocument()
   })
 })

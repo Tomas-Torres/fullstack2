@@ -63,6 +63,19 @@ function CompraExitosa() {
               <span>Total pagado:</span> <strong>{formatoCLP(orden.total)}</strong>
             </p>
 
+            {orden.pago && (
+              <>
+                <h3 className="mt-4 mb-2">Pago</h3>
+                <p className="text-secundario mb-1">
+                  {String(orden.pago.metodo).replaceAll('_', ' ')}
+                  {orden.pago.ultimosDigitos && <> · Tarjeta terminada en {orden.pago.ultimosDigitos}</>}
+                </p>
+                <p className="text-secundario small mb-0">
+                  Estado: {orden.pago.estado} · Código de transacción: {orden.pago.codigoTransaccion}
+                </p>
+              </>
+            )}
+
             <h3 className="mt-4 mb-2">Dirección de entrega</h3>
             <p className="text-secundario mb-0">
               {orden.direccion.calle} {orden.direccion.numero}, {orden.direccion.comuna},{' '}

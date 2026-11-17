@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event'
 import { Routes, Route } from 'react-router-dom'
 import { renderConProveedores } from '../utils'
 import Registro from '../../src/pages/Registro'
+import { instalarBackend } from '../fakeBackend'
 
 function renderRegistro() {
   return renderConProveedores(
@@ -27,8 +28,11 @@ async function llenar({ correo = 'ana@correo.com', password = 'Clave123!', confi
 const enviar = () => userEvent.click(screen.getByRole('button', { name: 'Registrar' }))
 
 describe('Página Registro', () => {
+  let backend
+
   beforeEach(() => {
     spyOn(window, 'alert')
+    backend = instalarBackend()
   })
 
   it('muestra un error junto a cada campo si se envía vacío', async () => {
@@ -81,14 +85,12 @@ describe('Página Registro', () => {
     expect(screen.getByText('Este correo ya está registrado.')).toBeInTheDocument()
   })
 
-  it('registra al usuario, lo guarda y lo envía al login', async () => {
+  it('registra al usuario en ms-login y lo envía al login', async () => {
     renderRegistro()
     await llenar()
     await enviar()
     expect(await screen.findByText('Pantalla login')).toBeInTheDocument()
     expect(window.alert).toHaveBeenCalled()
-
-    const guardados = JSON.parse(localStorage.getItem('usuarios'))
-    expect(guardados.some((u) => u.correo === 'ana@correo.com')).toBe(true)
+    expect(backend.estado.usuarios.some((u) => u.correo === 'ana@correo.com')).toBe(true)
   })
 })

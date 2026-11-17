@@ -1,6 +1,7 @@
-import { screen } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
 import { renderConProveedores } from '../utils'
 import Categorias from '../../src/pages/Categorias'
+import { instalarBackend } from '../fakeBackend'
 
 describe('Página Categorías', () => {
   it('muestra el título y la introducción', () => {
@@ -26,9 +27,11 @@ describe('Página Categorías', () => {
     ).toHaveAttribute('href', '/productos?categoria=Sillas%20Gamers')
   })
 
-  it('muestra el mensaje vacío si el catálogo no tiene productos', () => {
-    localStorage.setItem('productos', JSON.stringify([]))
+  it('muestra el mensaje vacío si el catálogo no tiene productos', async () => {
+    instalarBackend({ productos: [] })
     renderConProveedores(<Categorias />)
-    expect(screen.getByText('No hay categorías para mostrar.')).toBeInTheDocument()
+    await waitFor(() =>
+      expect(screen.getByText('No hay categorías para mostrar.')).toBeInTheDocument()
+    )
   })
 })

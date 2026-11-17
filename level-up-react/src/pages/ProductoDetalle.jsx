@@ -10,7 +10,8 @@ function ProductoDetalle() {
   const { agregarAlCarrito } = useCarrito()
   const [agregado, setAgregado] = useState(false)
 
-  const producto = productos.find((p) => p.id === id)
+  // El id de la URL llega como texto; los productos usan ids numéricos.
+  const producto = productos.find((p) => String(p.id) === String(id))
 
   if (!producto) {
     return (
@@ -28,9 +29,9 @@ function ProductoDetalle() {
   const enOferta = producto.oferta > 0
   const precioFinal = precioConOferta(producto)
 
-  const handleAgregar = () => {
-    agregarAlCarrito(producto)
-    setAgregado(true)
+  const handleAgregar = async () => {
+    const resultado = await agregarAlCarrito(producto)
+    if (resultado?.ok !== false) setAgregado(true)
   }
 
   return (

@@ -20,7 +20,7 @@ describe('Página Productos', () => {
     await userEvent.click(screen.getAllByRole('button', { name: 'Agregar al carrito' })[0])
     const carrito = JSON.parse(localStorage.getItem('carrito'))
     expect(carrito).toHaveLength(1)
-    expect(carrito[0].id).toBe('catan')
+    expect(carrito[0].id).toBe(1)
   })
 
   it('suma la cantidad al agregar el mismo producto dos veces', async () => {

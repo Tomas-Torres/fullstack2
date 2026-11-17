@@ -4,13 +4,16 @@ import { useCarrito } from '../context/CarritoContext'
 import { formatoCLP } from '../utils/precios'
 
 function Carrito() {
-  const { carrito, cambiarCantidad, cupon, aplicarCupon, total, totalDescuento, totalFinal } = useCarrito()
+  const {
+    carrito, cambiarCantidad, cupon, aplicarCupon, mensaje,
+    total, totalDescuento, totalFinal,
+  } = useCarrito()
   const [codigoCupon, setCodigoCupon] = useState('')
   const [mensajeCupon, setMensajeCupon] = useState({ texto: '', ok: false })
   const navigate = useNavigate()
 
-  const handleAplicarCupon = () => {
-    setMensajeCupon(aplicarCupon(codigoCupon))
+  const handleAplicarCupon = async () => {
+    setMensajeCupon(await aplicarCupon(codigoCupon))
   }
 
   const irAlCheckout = () => {
@@ -24,6 +27,12 @@ function Carrito() {
   return (
     <main className="px-4 py-5">
       <h1 className="mb-4">Mi carrito de compras</h1>
+
+      {mensaje.texto && (
+        <div className={`alert ${mensaje.tipo === 'error' ? 'alert-danger' : 'alert-success'} py-2`}>
+          {mensaje.texto}
+        </div>
+      )}
 
       <div className="row g-4">
         <div className="col-12 col-md-8">

@@ -26,14 +26,15 @@ module.exports = function (config) {
     files: ['tests/setup.js', 'tests/**/*.spec.js', 'tests/**/*.spec.jsx'],
     preprocessors: {
       'tests/setup.js': ['esbuild'],
-      'tests/**/*.spec.js': conCobertura ? ['esbuild', 'coverage'] : ['esbuild'],
-      'tests/**/*.spec.jsx': conCobertura ? ['esbuild', 'coverage'] : ['esbuild'],
+      'tests/**/*.spec.js': ['esbuild'],
+      'tests/**/*.spec.jsx': ['esbuild'],
     },
     coverageReporter: {
       dir: 'coverage',
       subdir: '.',
       reporters: [
         { type: 'json', file: 'coverage-final.json' },
+        { type: 'html', subdir: 'html' },
         { type: 'text-summary' },
       ],
     },

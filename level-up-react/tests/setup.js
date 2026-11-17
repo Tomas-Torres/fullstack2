@@ -95,3 +95,11 @@ beforeEach(() => {
   // En navegador real scrollTo funciona, pero no queremos scroll durante las pruebas.
   window.scrollTo = () => {}
 })
+
+// Sin backend instalado, cualquier fetch falla de inmediato. Así las pruebas
+// que no necesitan red usan el catálogo local de respaldo y las que sí la
+// necesitan llaman a instalarBackend() en su propio beforeEach.
+beforeEach(() => {
+  window.fetch = () =>
+    Promise.reject(new Error('Sin backend simulado: usa instalarBackend() en esta prueba'))
+})

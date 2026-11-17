@@ -30,7 +30,8 @@ function validar(d) {
 function Registro() {
   const [datos, setDatos] = useState(vacio)
   const [errores, setErrores] = useState({})
-  const { registrar } = useAuth()
+  const [errorGeneral, setErrorGeneral] = useState('')
+  const { registrar, cargando } = useAuth()
   const navigate = useNavigate()
 
   const comunas = regiones.find((r) => r.id === datos.region)?.comunas || []
@@ -44,15 +45,20 @@ function Registro() {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const nuevosErrores = validar(datos)
     setErrores(nuevosErrores)
+    setErrorGeneral('')
     if (Object.keys(nuevosErrores).length > 0) return
 
-    const resultado = registrar(datos)
+    const resultado = await registrar(datos)
     if (!resultado.ok) {
-      setErrores({ correo: 'Este correo ya está registrado.' })
+      if (resultado.estado === 409) {
+        setErrores({ correo: 'Este correo ya está registrado.' })
+      } else {
+        setErrorGeneral(resultado.mensaje)
+      }
       return
     }
     alert('¡Registro exitoso! Ahora puedes iniciar sesión.')
@@ -63,6 +69,8 @@ function Registro() {
     <main className="d-flex justify-content-center py-5 px-3">
       <form className="formulario-tienda" onSubmit={handleSubmit} noValidate>
         <h2 className="text-center mb-4">Registro de usuario</h2>
+
+        {errorGeneral && <div className="alert alert-danger py-2">{errorGeneral}</div>}
 
         <Campo id="nombre" label="Nombre completo" type="text" placeholder="Ej: Juan Pérez"
           value={datos.nombre} onChange={handleChange} error={errores.nombre}
@@ -114,7 +122,9 @@ function Registro() {
           </div>
         </div>
 
-        <button type="submit" className="btn btn-morado w-100 mt-3">Registrar</button>
+        <button type="submit" className="btn btn-morado w-100 mt-3" disabled={cargando}>
+          {cargando ? 'Registrando...' : 'Registrar'}
+        </button>
       </form>
     </main>
   )
