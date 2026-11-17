@@ -22,7 +22,7 @@
     <module>comun</module>
     <module>ms-login</module>
     <module>ms-productos</module>
-    <module>ms-compras</module>
+    <module>ms-pagos</module>
     <module>ms-reportes</module>
   </modules>
 

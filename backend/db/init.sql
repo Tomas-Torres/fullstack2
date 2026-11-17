@@ -9,7 +9,7 @@ CREATE DATABASE IF NOT EXISTS db_login
 CREATE DATABASE IF NOT EXISTS db_productos
   CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-CREATE DATABASE IF NOT EXISTS levelup_compras
+CREATE DATABASE IF NOT EXISTS db_pagos
   CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE DATABASE IF NOT EXISTS levelup_reportes
@@ -20,7 +20,7 @@ CREATE USER IF NOT EXISTS 'levelup'@'%' IDENTIFIED BY 'levelup';
 
 GRANT ALL PRIVILEGES ON db_login.*        TO 'levelup'@'%';
 GRANT ALL PRIVILEGES ON db_productos.*    TO 'levelup'@'%';
-GRANT ALL PRIVILEGES ON levelup_compras.* TO 'levelup'@'%';
+GRANT ALL PRIVILEGES ON db_pagos.*       TO 'levelup'@'%';
 GRANT ALL PRIVILEGES ON levelup_reportes.* TO 'levelup'@'%';
 
 FLUSH PRIVILEGES;

@@ -1,10 +1,10 @@
-package cl.levelup.compras;
+package cl.levelup.pagos;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MsComprasApplicationTests {
+class MsPagosApplicationTests {
 
 	@Test
 	void contextLoads() {

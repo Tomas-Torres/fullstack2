@@ -31,7 +31,7 @@ docker compose up -d
 docker exec levelup-mysql mysql -uroot -proot -e "SHOW DATABASES;"
 ```
 
-Debe aparecer `db_productos` (junto a `db_login`, `levelup_compras` y
+Debe aparecer `db_productos` (junto a `db_login`, `db_pagos` y
 `levelup_reportes`). El usuario de la aplicacion es `levelup` / `levelup`.
 
 > Si el volumen se creo antes del renombre del schema, ejecutar
@@ -133,7 +133,7 @@ En **Swagger**: boton *Authorize* -> pegar solo el token (sin la palabra `Bearer
 
 | Metodo | Ruta | Descripcion |
 |---|---|---|
-| POST | `/api/productos/stock/descontar` | Descuenta stock (uso interno de `ms-compras`) |
+| POST | `/api/productos/stock/descontar` | Descuenta stock (uso interno de `ms-pagos`) |
 | POST | `/api/productos/stock/reponer` | Repone stock (cancelaciones) |
 
 Cuerpo de los ajustes de stock:

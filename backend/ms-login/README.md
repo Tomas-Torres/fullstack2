@@ -31,7 +31,7 @@ docker compose up -d
 docker exec levelup-mysql mysql -uroot -proot -e "SHOW DATABASES;"
 ```
 
-Debe aparecer `db_login` junto a `db_productos`, `levelup_compras` y
+Debe aparecer `db_login` junto a `db_productos`, `db_pagos` y
 `levelup_reportes`. El usuario de la aplicacion es `levelup` / `levelup`.
 
 > Si el volumen se creo con el nombre antiguo `levelup_auth`, crear la base sin
