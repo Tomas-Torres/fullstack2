@@ -1,0 +1,201 @@
+# ============================================================
+# Level-Up Gamer - Compose de produccion para una instancia t3.micro
+# ============================================================
+# Uso:
+#   1. Copiar .env.prod.example como .env
+#   2. Ajustar PUBLIC_HOST, MYSQL_ROOT_PASSWORD, DB_PASSWORD y JWT_SECRET
+#   3. docker compose -f docker-compose.prod.yml up -d --build
+#
+# Puertos publicos: 80 (frontend), 8081, 8082, 8083 y 8085 (API).
+# MySQL queda solo en la red interna, sin puerto publicado.
+# ============================================================
+
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: levelup-mysql
+    restart: unless-stopped
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --innodb-buffer-pool-size=128M
+      - --performance-schema=OFF
+      - --max-connections=60
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?definir MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: db_login
+    volumes:
+      - levelup-mysql-data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 40s
+    mem_limit: 320m
+    networks:
+      - levelup
+
+  ms-login:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MODULO: ms-login
+    image: levelup/ms-login:1.0.0
+    container_name: levelup-ms-login
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SERVER_PORT: 8081
+      DB_URL: jdbc:mysql://mysql:3306/db_login?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      DB_USER: ${DB_USER:-levelup}
+      DB_PASSWORD: ${DB_PASSWORD:?definir DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET:?definir JWT_SECRET}
+      JWT_EXPIRATION_MINUTES: ${JWT_EXPIRATION_MINUTES:-120}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost}
+    ports:
+      - "8081:8081"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8081/actuator/health | grep -q '\"UP\"'"]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+    mem_limit: 360m
+    networks:
+      - levelup
+
+  ms-productos:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MODULO: ms-productos
+    image: levelup/ms-productos:1.0.0
+    container_name: levelup-ms-productos
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SERVER_PORT: 8082
+      DB_URL: jdbc:mysql://mysql:3306/db_productos?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      DB_USER: ${DB_USER:-levelup}
+      DB_PASSWORD: ${DB_PASSWORD:?definir DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET:?definir JWT_SECRET}
+      JWT_EXPIRATION_MINUTES: ${JWT_EXPIRATION_MINUTES:-120}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost}
+    ports:
+      - "8082:8082"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8082/actuator/health | grep -q '\"UP\"'"]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+    mem_limit: 360m
+    networks:
+      - levelup
+
+  ms-carrito:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MODULO: ms-carrito
+    image: levelup/ms-carrito:1.0.0
+    container_name: levelup-ms-carrito
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+      ms-productos:
+        condition: service_healthy
+    environment:
+      SERVER_PORT: 8083
+      DB_URL: jdbc:mysql://mysql:3306/db_carrito?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      DB_USER: ${DB_USER:-levelup}
+      DB_PASSWORD: ${DB_PASSWORD:?definir DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET:?definir JWT_SECRET}
+      JWT_EXPIRATION_MINUTES: ${JWT_EXPIRATION_MINUTES:-120}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost}
+      PRODUCTOS_URL: http://ms-productos:8082
+      PRODUCTOS_TIMEOUT_MS: 3000
+    ports:
+      - "8083:8083"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8083/actuator/health | grep -q '\"UP\"'"]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+    mem_limit: 360m
+    networks:
+      - levelup
+
+  ms-pagos:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MODULO: ms-pagos
+    image: levelup/ms-pagos:1.0.0
+    container_name: levelup-ms-pagos
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SERVER_PORT: 8085
+      DB_URL: jdbc:mysql://mysql:3306/db_pagos?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      DB_USER: ${DB_USER:-levelup}
+      DB_PASSWORD: ${DB_PASSWORD:?definir DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET:?definir JWT_SECRET}
+      JWT_EXPIRATION_MINUTES: ${JWT_EXPIRATION_MINUTES:-120}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost}
+    ports:
+      - "8085:8085"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8085/actuator/health | grep -q '\"UP\"'"]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+    mem_limit: 360m
+    networks:
+      - levelup
+
+  frontend:
+    build:
+      context: ../level-up-react
+      dockerfile: Dockerfile
+      args:
+        VITE_API_LOGIN: http://${PUBLIC_HOST:?definir PUBLIC_HOST}:8081
+        VITE_API_PRODUCTOS: http://${PUBLIC_HOST}:8082
+        VITE_API_CARRITO: http://${PUBLIC_HOST}:8083
+        VITE_API_PAGOS: http://${PUBLIC_HOST}:8085
+    image: levelup/frontend:1.0.0
+    container_name: levelup-frontend
+    restart: unless-stopped
+    depends_on:
+      - ms-login
+      - ms-productos
+      - ms-carrito
+      - ms-pagos
+    ports:
+      - "80:80"
+    mem_limit: 64m
+    networks:
+      - levelup
+
+volumes:
+  levelup-mysql-data:
+    name: levelup-mysql-data
+
+networks:
+  levelup:
+    driver: bridge

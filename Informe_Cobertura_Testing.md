@@ -1,15 +1,14 @@
 # INFORME DE COBERTURA DE PRUEBAS UNITARIAS
 
-&nbsp;
-
 | | |
 |---|---|
 | **Proyecto** | Level-Up Gamer |
 | **Alumno** | Tomás Torres Delgado |
-| **Asignatura** | DSY1104 - Desarrollo Fullstack II |
-| **Evaluación** | Evaluación Parcial N° 2 |
+| **Asignatura** | DSY1104 – Desarrollo Fullstack II |
+| **Evaluación** | Evaluación Parcial N.° 3 y Evaluación Final de Taller (EP3 + EFT) |
 | **Institución** | Duoc UC |
-| **Fecha** | Octubre 2026 |
+| **Fecha** | Noviembre 2026 |
+| **Versión** | 3.0 |
 
 ---
 
@@ -23,313 +22,481 @@
    - 3.1 Módulos incluidos
    - 3.2 Elementos excluidos
 4. Entorno y herramientas utilizadas
-   - 4.1 Herramientas
-   - 4.2 Archivos de configuración
 5. Metodología
-   - 5.1 Instrumentación del código
+   - 5.1 Instrumentación del código fuente
    - 5.2 Ejecución en navegador real
-   - 5.3 Generación de datos crudos
-   - 5.4 Procesamiento y reporte HTML
-   - 5.5 Umbrales de Istanbul
+   - 5.3 Backend simulado y sincronización de efectos
+   - 5.4 Generación de datos y reportes
+   - 5.5 Indicadores de Istanbul
 6. Ejecución de las pruebas y generación de cobertura
-   - 6.1 Ejecución de las pruebas
-   - 6.2 Generación del reporte de cobertura
-   - 6.3 Responsable de la ejecución
 7. Resultados de cobertura
    - 7.1 Cobertura global
    - 7.2 Cobertura por módulo
+   - 7.3 Archivos con menor cobertura
 8. Análisis y cumplimiento del umbral
-   - 8.1 Umbral exigido
-   - 8.2 Análisis de resultados
 9. Evidencia
-   - 9.1 Capturas de pantalla
-   - 9.2 Archivos generados
 10. Conclusión
 11. Anexos
-    - Anexo A: Comandos utilizados
-    - Anexo B: Archivos de configuración
-    - Anexo C: Ubicación de archivos
-    - Anexo D: Resultado de pruebas
+    - Anexo A: comandos utilizados
+    - Anexo B: archivos de configuración
+    - Anexo C: ubicación de archivos
+    - Anexo D: resultado de pruebas
 
 ---
 
 ## 1. Introducción
 
-El presente informe documenta la cobertura de código alcanzada por las pruebas unitarias del proyecto **Level-Up Gamer**, una tienda online de productos para gamers que fue migrada desde un sitio estático (HTML, CSS y JavaScript) a una aplicación desarrollada con **React**.
+El presente informe documenta la cobertura de código alcanzada por las pruebas del frontend de **Level-Up Gamer**, una tienda online de productos para gamers desarrollada para DSY1104.
 
-Como parte de la Evaluación Parcial N° 2 de la asignatura DSY1104 - Desarrollo Fullstack II, se implementaron pruebas unitarias con **Jasmine** y **Karma** para garantizar el correcto funcionamiento de los componentes, contextos, páginas y utilidades de la aplicación. Las pruebas verifican tanto el renderizado y las propiedades de los componentes como el manejo de estado y la respuesta a eventos del usuario.
+En esta versión la aplicación dejó de funcionar solo en el navegador: el frontend React se integra con cuatro microservicios Spring Boot (`ms-login`, `ms-productos`, `ms-carrito` y `ms-pagos`) mediante peticiones HTTP con JWT. Por lo tanto, las pruebas ya no se limitan al renderizado: también verifican el flujo completo de autenticación, catálogo, carrito con cupones y pagos contra un backend simulado que reproduce las respuestas reales de los cuatro servicios.
 
-El informe presenta el entorno de pruebas, la metodología utilizada, los resultados de cobertura obtenidos y el análisis de cumplimiento respecto del umbral mínimo exigido.
+Las pruebas están implementadas con **Jasmine** y se ejecutan con **Karma** en un navegador real. La cobertura se mide sobre el código fuente de `src/` con **Istanbul**, instrumentado dentro del empaquetado de esbuild.
 
 ## 2. Objetivo
 
 ### 2.1 Objetivo general
 
-Evidenciar el porcentaje de cobertura de código alcanzado por las pruebas unitarias del proyecto Level-Up Gamer, verificando que se cumple con el umbral mínimo exigido de un **60% de líneas cubiertas**.
+Evidenciar el porcentaje de cobertura alcanzado por las pruebas del frontend, verificando el cumplimiento del umbral mínimo exigido de **60% de líneas cubiertas**, además de comprobar que las 190 pruebas se ejecutan sin fallos.
 
 ### 2.2 Criterio de aceptación
 
 | Indicador | Umbral mínimo exigido |
 |---|---|
 | Líneas cubiertas (Lines) | **≥ 60%** |
+| Pruebas fallidas | **0** |
 
 ## 3. Alcance
 
-El análisis de cobertura se realiza únicamente sobre el código fuente del proyecto ubicado en la carpeta `src/`.
+El análisis se realiza únicamente sobre el código fuente de la aplicación, ubicado en `fullstack2/level-up-react/src/`.
 
 ### 3.1 Módulos incluidos
 
-| Módulo | Archivos analizados |
+| Módulo | Contenido |
 |---|---|
-| Componentes | `Header.jsx`, `Footer.jsx`, `ProductCard.jsx`, `Campo.jsx`, `RutaAdmin.jsx` |
-| Contextos | `AuthContext.jsx`, `CarritoContext.jsx`, `ProductosContext.jsx` |
-| Páginas | `Home.jsx`, `Productos.jsx`, `Categorias.jsx`, `Ofertas.jsx`, `ProductoDetalle.jsx`, `Carrito.jsx`, `Checkout.jsx`, `CompraExitosa.jsx`, `CompraFallida.jsx`, `Login.jsx`, `Registro.jsx`, `Admin.jsx` |
-| Rutas | `App.jsx` |
-| Utilidades | `utils/precios.js` |
+| `api/` | `cliente.js` (peticiones HTTP y lectura de variables de entorno) y `mapeo.js` (traducción de respuestas de la API al modelo del frontend) |
+| `components/` | `Header.jsx`, `Footer.jsx`, `ProductCard.jsx`, `Campo.jsx`, `RutaAdmin.jsx` |
+| `context/` | `AuthContext.jsx`, `CarritoContext.jsx`, `ProductosContext.jsx` |
+| `data/` | `ProductosIniciales.js` y `regiones.js` |
+| `pages/` | `Home`, `Productos`, `Categorias`, `Ofertas`, `ProductoDetalle`, `Carrito`, `Checkout`, `CompraExitosa`, `CompraFallida`, `Login`, `Registro` y `Admin` |
+| `utils/` | `precios.js` |
+| Raíz | `App.jsx` (definición de rutas) |
 
 ### 3.2 Elementos excluidos
 
-Quedan fuera del cálculo de cobertura:
-
 - La carpeta `tests/`, que contiene las propias pruebas y su configuración.
-- La carpeta `node_modules/`, que contiene las dependencias de terceros.
-- La carpeta `data/`, que contiene datos de ejemplo del proyecto.
+- `node_modules/`, dependencias de terceros.
+- `dist/`, `coverage/` y el código compilado.
+- Los archivos de configuración (`karma.conf.cjs`, `karma.pp.cjs`, `vite.config.js`).
 
 ## 4. Entorno y herramientas utilizadas
 
-### 4.1 Herramientas
-
-| Herramienta | Función en el proyecto |
+| Herramienta | Versión / función |
 |---|---|
-| Jasmine | Framework de pruebas: define y ejecuta los casos de prueba (`describe`, `it`, `expect`) |
-| Karma | Ejecutor de pruebas: lanza el navegador y ejecuta las pruebas en él |
-| Microsoft Edge (headless) | Navegador real, sin interfaz gráfica, donde se ejecutan las pruebas |
-| @testing-library/react | Renderizado de componentes React y consultas al DOM desde la perspectiva del usuario |
-| @testing-library/user-event | Simulación de interacciones del usuario (clics, escritura, selección) |
-| esbuild | Transpilación de JSX y módulos ES para que Karma pueda ejecutar el código |
-| karma-coverage | Instrumentación del código y recolección de datos de cobertura |
-| istanbul-lib-coverage | Manejo y combinación de los datos de cobertura |
-| istanbul-lib-report | Construcción de los reportes de cobertura |
-| istanbul-reports | Generación de los formatos de reporte (HTML y resumen en texto) |
+| Jasmine | 7 – framework de pruebas (`describe`, `it`, `expect`) |
+| Karma | 6 – ejecutor que lanza el navegador y recopila los resultados |
+| Microsoft Edge / Google Chrome headless | navegador real sin interfaz gráfica donde corren las pruebas |
+| @testing-library/react | 16 – renderizado de componentes y consultas al DOM |
+| @testing-library/user-event | 14 – simulación de clics y escritura del usuario |
+| esbuild | 0.28 – transpilación de JSX y empaquetado de las pruebas |
+| istanbul-lib-instrument | instrumentación del código fuente con contadores de ejecución |
+| karma-coverage | 2.2 – recolección y generación de reportes (`json`, `html`, `text-summary`) |
+| oxlint | análisis estático del código (`npm run lint`) |
+| Vite | 8 – compilación de producción (`npm run build`) |
 
-### 4.2 Archivos de configuración
+### Archivos de configuración
 
 | Archivo | Propósito |
 |---|---|
-| `karma.conf.cjs` | Configuración principal de Karma: navegador, archivos, preprocesadores y reporte de cobertura |
-| `karma.pp.cjs` | Preprocesador propio que transpila el código con esbuild |
-| `tests/setup.js` | Configuración global de las pruebas |
-| `tests/utils.jsx` | Función auxiliar para renderizar componentes con los proveedores de la aplicación |
-| `generar-cobertura.cjs` | Script que procesa los datos crudos y genera el reporte HTML filtrado |
+| `karma.conf.cjs` | Define navegador, archivos de prueba, preprocesadores, reportes y ejecución única |
+| `karma.pp.cjs` | Preprocesador propio: empaqueta con esbuild e instrumenta `src/` con Istanbul cuando se usa `--coverage` |
+| `tests/setup.js` | Matchers personalizados, limpieza de `localStorage` y `fetch` que falla por defecto |
+| `tests/utils.jsx` | Renderizado con los tres proveedores y helper `esperarEfectos()` para pruebas de hooks |
 
 ## 5. Metodología
 
-### 5.1 Instrumentación del código
+### 5.1 Instrumentación del código fuente
 
-Durante la ejecución de las pruebas, **karma-coverage** instrumenta el código fuente de `src/` mediante Istanbul. Esta instrumentación agrega contadores que registran qué sentencias, ramas, funciones y líneas se ejecutan mientras corren las pruebas.
+Instrumentar el bundle final generado por esbuild producía un reporte vacío (`0/0`), porque el código ya estaba minificado y no conservaba la estructura de los archivos originales. Por eso se instrumenta el **código fuente** dentro de un plugin de esbuild:
+
+```js
+build.onLoad({ filter: /[\\/]src[\\/].*\.(js|jsx)$/ }, async (args) => {
+  const codigo = await fs.promises.readFile(args.path, 'utf8')
+  return {
+    contents: instrumenter.instrumentSync(codigo, args.path),
+    loader: args.path.endsWith('.jsx') ? 'jsx' : 'js',
+  }
+})
+```
+
+El instrumenter se crea con `esModules: true` y una lista de `parserPlugins` que incluye `jsx`, `importMeta`, `dynamicImport` y sintaxis moderna. Así las líneas del informe coinciden con los archivos reales de `src/`.
 
 ### 5.2 Ejecución en navegador real
 
-Las pruebas se ejecutan en **Microsoft Edge en modo headless**, es decir, en un navegador real sin interfaz gráfica. Esto permite verificar el comportamiento de los componentes en un entorno cercano al que utiliza un usuario final.
+Karma lanza Edge o Chrome en modo headless (se detecta automáticamente la ruta del ejecutable). Las pruebas corren en un DOM real, lo que permite validar navegación con React Router, eventos del usuario y el comportamiento de `localStorage`.
 
-### 5.3 Generación de datos crudos
+### 5.3 Backend simulado y sincronización de efectos
 
-Al finalizar la ejecución, se genera el archivo `coverage/coverage-final.json`, que contiene los datos crudos de instrumentación de todos los archivos que fueron cargados durante las pruebas.
+`tests/fakeBackend.js` instala un `fetch` que reproduce los cuatro microservicios, incluyendo códigos HTTP y errores (`400`, `401`, `403`, `404`, `409`, `503`). `tests/setup.js` hace que cualquier petición sin backend simulado falle de inmediato, para que una prueba no dependa accidentalmente de otra.
 
-### 5.4 Procesamiento y reporte HTML
+En las pruebas de hooks con `renderHook`, `waitFor` no siempre se despierta porque no hay cambios en el DOM. Se usa el helper `esperarEfectos()` de `tests/utils.jsx`, que ejecuta dos ciclos de `act(async () => {})` antes de las aserciones.
 
-El script `generar-cobertura.cjs` procesa el archivo `coverage-final.json` para:
+### 5.4 Generación de datos y reportes
 
-1. Filtrar únicamente los archivos pertenecientes a `src/`, descartando `tests/`, `node_modules/` y `data/`.
-2. Calcular los porcentajes de cobertura globales y por archivo.
-3. Generar el reporte HTML navegable en `coverage/html/index.html`.
+Al terminar la ejecución se generan:
 
-### 5.5 Umbrales de Istanbul
+- `coverage/coverage-final.json`: datos crudos de cobertura por archivo.
+- `coverage/html/index.html`: reporte HTML navegable con detalle línea por línea.
+- Resumen en texto en la consola (`Statements`, `Branches`, `Functions`, `Lines`).
 
-Istanbul mide la cobertura mediante cuatro indicadores:
+No se requiere ningún script adicional de post-procesamiento: el plugin de instrumentación ya deja fuera del reporte los archivos de `tests/`.
+
+### 5.5 Indicadores de Istanbul
 
 | Indicador | Qué mide |
 |---|---|
-| Statements (sentencias) | Porcentaje de sentencias del código que se ejecutaron |
-| Branches (ramas) | Porcentaje de caminos de decisión (`if`, operadores ternarios, `&&`) que se ejecutaron |
-| Functions (funciones) | Porcentaje de funciones que fueron invocadas |
-| Lines (líneas) | Porcentaje de líneas de código que se ejecutaron |
-
-Para esta evaluación, el indicador de referencia es **Lines**, con un umbral mínimo de **60%**.
+| Statements | Porcentaje de sentencias ejecutadas |
+| Branches | Porcentaje de caminos de decisión (`if`, ternarios, `&&`, `\|\|`) ejecutados |
+| Functions | Porcentaje de funciones invocadas |
+| Lines | Porcentaje de líneas ejecutadas (indicador de referencia) |
 
 ## 6. Ejecución de las pruebas y generación de cobertura
 
-Todos los comandos se ejecutaron desde la carpeta `fullstack2/level-up-react/`.
+Todos los comandos se ejecutan desde `fullstack2/level-up-react/`.
 
-### 6.1 Ejecución de las pruebas
+### 6.1 Pruebas
 
 ```bash
 npm test
 ```
 
-Resultado obtenido:
+Resultado:
 
 ```
-TOTAL: 153 SUCCESS, 0 FAILED
+TOTAL: 190 SUCCESS
 ```
 
-Las **153 pruebas** se encuentran en verde, sin ninguna prueba fallida.
-
-### 6.2 Generación del reporte de cobertura
+### 6.2 Cobertura
 
 ```bash
 npm run test:coverage
-node generar-cobertura.cjs
 ```
 
-Con esto se generan:
+Resultado:
 
-- `coverage/coverage-final.json`: datos crudos de instrumentación.
-- `coverage/html/index.html`: reporte HTML navegable.
+```
+TOTAL: 190 SUCCESS
+Statements   : 94.05% ( 743/790 )
+Branches     : 86.03% ( 462/537 )
+Functions    : 94.24% ( 180/191 )
+Lines        : 94.86% ( 665/701 )
+```
 
-### 6.3 Responsable de la ejecución
+### 6.3 Verificación adicional
 
-La ejecución de las pruebas y la generación del reporte de cobertura fueron realizadas por **Tomás Torres Delgado** desde su equipo local.
+| Comando | Resultado |
+|---|---|
+| `npm run lint` | Código de salida 0 (solo advertencias informativas de Fast Refresh y `setState` en efectos) |
+| `npm run build` | Compilación correcta con Vite 8 (50 módulos transformados) |
+
+### 6.4 Responsable
+
+La ejecución de las pruebas y la generación del reporte fueron realizadas por **Tomás Torres Delgado** en equipo local con Windows 11 y Node.js 24.
 
 ## 7. Resultados de cobertura
 
-Los valores de esta sección corresponden a los obtenidos del reporte generado en `coverage/html/index.html` (fila *All files*).
+Los valores corresponden al reporte generado en `coverage/html/index.html`.
 
 ### 7.1 Cobertura global
 
-| Indicador | Elementos cubiertos | Total de elementos | Porcentaje |
+| Indicador | Cubiertos | Total | Porcentaje |
 |---|---|---|---|
-| Statements | [COMPLETAR] | [COMPLETAR] | [COMPLETAR] % |
-| Branches | [COMPLETAR] | [COMPLETAR] | [COMPLETAR] % |
-| Functions | [COMPLETAR] | [COMPLETAR] | [COMPLETAR] % |
-| **Lines** | [COMPLETAR] | [COMPLETAR] | **[COMPLETAR] %** |
+| Statements | 743 | 790 | 94,05% |
+| Branches | 462 | 537 | 86,03% |
+| Functions | 180 | 191 | 94,24% |
+| **Lines** | **665** | **701** | **94,86%** |
 
 ### 7.2 Cobertura por módulo
 
-| Módulo | Archivos | Statements | Branches | Functions | Lines |
-|---|---|---|---|---|---|
-| `components/` | Header, Footer, ProductCard, Campo, RutaAdmin | [COMPLETAR] % | [COMPLETAR] % | [COMPLETAR] % | [COMPLETAR] % |
-| `context/` | AuthContext, CarritoContext, ProductosContext | [COMPLETAR] % | [COMPLETAR] % | [COMPLETAR] % | [COMPLETAR] % |
-| `pages/` | Home, Productos, Categorias, Ofertas, ProductoDetalle, Carrito, Checkout, CompraExitosa, CompraFallida, Login, Registro, Admin | [COMPLETAR] % | [COMPLETAR] % | [COMPLETAR] % | [COMPLETAR] % |
-| `utils/` | precios.js | [COMPLETAR] % | [COMPLETAR] % | [COMPLETAR] % | [COMPLETAR] % |
-| `App.jsx` | App.jsx | [COMPLETAR] % | [COMPLETAR] % | [COMPLETAR] % | [COMPLETAR] % |
+| Módulo | Statements | Branches | Functions | Lines |
+|---|---|---|---|---|
+| `api/` | 91,43% | 75,38% | 87,10% | 92,31% |
+| `components/` | 100,00% | 100,00% | 100,00% | 100,00% |
+| `context/` | 92,61% | 81,30% | 96,67% | 93,75% |
+| `data/` | 100,00% | 100,00% | 100,00% | 100,00% |
+| `pages/` | 95,04% | 88,85% | 94,25% | 95,70% |
+| `utils/` | 100,00% | 100,00% | 100,00% | 100,00% |
+| `App.jsx` | 100,00% | 100,00% | 100,00% | 100,00% |
+
+### 7.3 Archivos con menor cobertura
+
+| Archivo | Lines | Motivo |
+|---|---|---|
+| `CompraFallida.jsx` | 80,00% | La rama de navegación condicional al volver al carrito no se ejecuta en las pruebas |
+| `Productos.jsx` | 88,00% | Algunos caminos de paginación vacía no se cubren |
+| `ProductosContext.jsx` | 90,38% | Ramas de error al recargar el catálogo |
+| `cliente.js` | 92,59% | Ramas de timeout y de lectura de variables de entorno |
+
+Ningún archivo queda por debajo del 80% de líneas cubiertas.
 
 ## 8. Análisis y cumplimiento del umbral
 
-### 8.1 Umbral exigido
-
-El umbral mínimo exigido para esta evaluación es de **60% de líneas cubiertas** (Lines ≥ 60%).
-
 | Criterio | Umbral exigido | Resultado obtenido | Estado |
 |---|---|---|---|
-| Líneas cubiertas (Lines) | ≥ 60% | [COMPLETAR] % | Cumple |
+| Líneas cubiertas (Lines) | ≥ 60% | 94,86% | ✅ Cumple ampliamente |
+| Pruebas fallidas | 0 | 0 | ✅ Cumple |
 
-### 8.2 Análisis de resultados
-
-El porcentaje de líneas cubiertas obtenido (sección 7.1) **supera el umbral mínimo exigido de 60%**, por lo que el proyecto cumple con el criterio de aceptación establecido para la Evaluación Parcial N° 2.
-
-La cobertura se distribuye entre los distintos módulos de la aplicación (sección 7.2): los componentes reutilizables, los contextos que gestionan el estado global (sesión, carrito y productos), las páginas con sus flujos de navegación, compra y administración, las rutas y las utilidades de cálculo de precios. Las 153 pruebas verifican el renderizado, las propiedades recibidas, los cambios de estado y la respuesta a los eventos del usuario, mediante el uso de simulaciones (*mocks*) para elementos como las alertas del navegador y las funciones recibidas por props.
+El resultado supera el umbral por **34,86 puntos porcentuales**. Las 190 pruebas cubren los componentes reutilizables, los tres contextos, las doce páginas, las rutas, el cálculo de precios y la integración con los cuatro servicios simulados. Las ramas no cubiertas corresponden principalmente a caminos de error poco probables (timeouts, respuestas inesperadas) y a ramas de navegación visual.
 
 ## 9. Evidencia
 
-### 9.1 Capturas de pantalla
+### 9.1 Archivos generados
 
-Se adjuntan como evidencia las siguientes capturas:
+- `coverage/coverage-final.json`: datos crudos de instrumentación.
+- `coverage/html/index.html`: reporte HTML navegable.
+- `entregables/evidencia/ejecucion-npm-test.txt`: salida de `npm test`.
+- `entregables/evidencia/ejecucion-test-coverage.txt`: salida de `npm run test:coverage`.
+- `entregables/evidencia/verificacion-backend.txt`: health y respuestas de los cuatro microservicios.
+- `entregables/evidencia/cobertura-resumen.png`: captura del reporte HTML.
+- `entregables/evidencia/demo-frontend.png`: captura de la tienda servida por Nginx.
 
-1. **Resumen de cobertura:** captura de `coverage/html/index.html` o del resumen en texto generado por Istanbul.
+### 9.2 Capturas
 
-   ![Resumen de cobertura](evidencia/cobertura-resumen.png)
+**Resumen de cobertura**
 
-2. **Ejecución de `npm run test:coverage`:** captura del terminal con el resultado de la ejecución.
+![Resumen de cobertura](entregables/evidencia/cobertura-resumen.png)
 
-   ![Ejecución de test:coverage](evidencia/ejecucion-test-coverage.png)
+**Tienda en ejecución (frontend + microservicios)**
 
-3. **Ejecución de `npm test`:** captura del terminal con el resultado `TOTAL: 153 SUCCESS, 0 FAILED`.
-
-   ![Ejecución de npm test](evidencia/ejecucion-npm-test.png)
-
-### 9.2 Archivos generados
-
-Se adjunta la carpeta `coverage/`, que contiene:
-
-- `coverage-final.json`: datos crudos de instrumentación.
-- `html/`: reporte HTML navegable (abrir `html/index.html`).
+![Demo frontend](entregables/evidencia/demo-frontend.png)
 
 ## 10. Conclusión
 
-Las pruebas unitarias del proyecto Level-Up Gamer fueron ejecutadas correctamente, con un resultado de **153 SUCCESS, 0 FAILED**. El reporte de cobertura generado con Jasmine, Karma e Istanbul demuestra la verificación de los principales módulos del proyecto (componentes, contextos, páginas, rutas y utilidades) y evidencia que se supera el umbral mínimo exigido de **60% de líneas cubiertas**.
+Las pruebas del frontend de Level-Up Gamer se ejecutaron correctamente: **190 SUCCESS, 0 FAILED**. El reporte generado con Jasmine, Karma e Istanbul muestra **94,86% de cobertura de líneas**, muy por encima del mínimo exigido de 60%.
 
-De este modo, se cumplen los requisitos solicitados para la Evaluación Parcial N° 2 en cuanto a configuración del entorno de pruebas, escritura de pruebas unitarias, uso de simulaciones (*mocks*), análisis de resultados y cobertura de código.
+La instrumentación directa del código fuente dentro de esbuild permitió que el informe refleje los archivos reales de `src/`, y el backend simulado permitió probar la integración con los cuatro microservicios sin depender de que estuvieran levantados. Con esto se cumplen los requisitos de configuración, ejecución, uso de simulaciones, análisis de resultados y cobertura de código solicitados en la EP3 y la EFT.
 
 **Tomás Torres Delgado**
-DSY1104 - Desarrollo Fullstack II, Duoc UC
-Octubre 2026
+DSY1104 – Desarrollo Fullstack II, Duoc UC
+Noviembre 2026
+
+---
 
 ## 11. Anexos
 
-### Anexo A: Comandos utilizados
-
-Todos los comandos se ejecutan desde `fullstack2/level-up-react/`.
+### Anexo A: comandos utilizados
 
 | Comando | Descripción |
 |---|---|
 | `npm install` | Instala las dependencias del proyecto |
-| `npm test` | Ejecuta las pruebas unitarias con Jasmine y Karma |
-| `npm run test:coverage` | Ejecuta las pruebas con instrumentación de cobertura |
-| `node generar-cobertura.cjs` | Filtra `src/` y genera el reporte HTML en `coverage/html/` |
+| `npm test` | Ejecuta las 190 pruebas con Jasmine y Karma |
+| `npm run test:watch` | Modo observación durante el desarrollo |
+| `npm run test:coverage` | Ejecuta las pruebas con instrumentación y genera los reportes |
+| `npm run lint` | Análisis estático con oxlint |
+| `npm run build` | Compilación de producción con Vite |
 
-### Anexo B: Archivos de configuración
+### Anexo B: archivos de configuración
 
 #### `karma.conf.cjs`
 
 ```js
-// [COMPLETAR] Pegar aquí el contenido de karma.conf.cjs
+const fs = require('fs')
+const createEsbuildPreprocessor = require('./karma.pp.cjs')
+
+if (!process.env.CHROME_BIN) {
+  const candidatos = [
+    'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+    'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
+    'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
+    'C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe',
+  ]
+  const encontrado = candidatos.find((ruta) => fs.existsSync(ruta))
+  if (encontrado) process.env.CHROME_BIN = encontrado
+}
+
+module.exports = function (config) {
+  const conCobertura = process.argv.includes('--coverage')
+  config.set({
+    basePath: '',
+    frameworks: ['jasmine'],
+    plugins: [
+      'karma-jasmine',
+      'karma-chrome-launcher',
+      'karma-coverage',
+      { 'preprocessor:esbuild': ['factory', createEsbuildPreprocessor] },
+    ],
+    files: ['tests/setup.js', 'tests/**/*.spec.js', 'tests/**/*.spec.jsx'],
+    preprocessors: {
+      'tests/setup.js': ['esbuild'],
+      'tests/**/*.spec.js': ['esbuild'],
+      'tests/**/*.spec.jsx': ['esbuild'],
+    },
+    coverageReporter: {
+      dir: 'coverage',
+      subdir: '.',
+      reporters: [
+        { type: 'json', file: 'coverage-final.json' },
+        { type: 'html', subdir: 'html' },
+        { type: 'text-summary' },
+      ],
+    },
+    reporters: conCobertura ? ['progress', 'coverage'] : ['progress'],
+    browsers: ['ChromeHeadlessNoSandbox'],
+    customLaunchers: {
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage'],
+      },
+    },
+    client: { jasmine: { random: false } },
+    singleRun: true,
+    concurrency: 1,
+  })
+}
 ```
 
-#### `karma.pp.cjs`
+#### `karma.pp.cjs` (fragmento principal)
 
 ```js
-// [COMPLETAR] Pegar aquí el contenido de karma.pp.cjs
+const fs = require('fs')
+const esbuild = require('esbuild')
+
+const SINTAXIS = [
+  'jsx', 'importMeta', 'dynamicImport', 'classProperties',
+  'classPrivateProperties', 'classPrivateMethods', 'objectRestSpread',
+  'optionalCatchBinding', 'topLevelAwait', 'numericSeparator',
+]
+
+function pluginCobertura() {
+  const { createInstrumenter } = require('istanbul-lib-instrument')
+  const instrumenter = createInstrumenter({
+    esModules: true,
+    coverageVariable: '__coverage__',
+    parserPlugins: SINTAXIS,
+  })
+
+  return {
+    name: 'istanbul-src',
+    setup(build) {
+      build.onLoad({ filter: /[\\/]src[\\/].*\.(js|jsx)$/ }, async (args) => {
+        const codigo = await fs.promises.readFile(args.path, 'utf8')
+        return {
+          contents: instrumenter.instrumentSync(codigo, args.path),
+          loader: args.path.endsWith('.jsx') ? 'jsx' : 'js',
+        }
+      })
+    },
+  }
+}
+
+module.exports = function createEsbuildPreprocessor(logger) {
+  const conCobertura = process.argv.includes('--coverage')
+  return function (contenido, archivo, done) {
+    esbuild.build({
+      stdin: {
+        contents: contenido,
+        loader: 'jsx',
+        resolveDir: require('path').dirname(archivo.originalPath),
+        sourcefile: archivo.originalPath,
+      },
+      bundle: true,
+      write: false,
+      format: 'iife',
+      target: 'es2020',
+      jsx: 'automatic',
+      minify: true,
+      sourcemap: conCobertura ? 'inline' : false,
+      define: { 'process.env.NODE_ENV': '"development"' },
+      plugins: conCobertura ? [pluginCobertura()] : [],
+      logLevel: 'silent',
+    })
+      .then((resultado) => { /* extrae el source map y entrega el JS a Karma */ })
+      .catch((error) => done(error, null))
+  }
+}
 ```
 
-#### `tests/setup.js`
+#### `tests/setup.js` (fragmento principal)
 
 ```js
-// [COMPLETAR] Pegar aquí el contenido de tests/setup.js
+beforeEach(() => {
+  jasmine.addMatchers({
+    toBeInTheDocument() { /* ... */ },
+    toBeDisabled() { /* ... */ },
+    toHaveClass() { /* ... */ },
+    toHaveAttribute() { /* ... */ },
+    toHaveValue() { /* ... */ },
+    toHaveLength() { /* ... */ },
+    toHaveTextContent() { /* ... */ },
+  })
+})
+
+beforeEach(() => {
+  localStorage.clear()
+  window.scrollTo = () => {}
+})
+
+beforeEach(() => {
+  window.fetch = () =>
+    Promise.reject(new Error('Sin backend simulado: usa instalarBackend() en esta prueba'))
+})
 ```
 
-#### `generar-cobertura.cjs`
+#### `tests/utils.jsx` (fragmento principal)
 
-```js
-// [COMPLETAR] Pegar aquí el contenido de generar-cobertura.cjs
+```jsx
+export function renderConProveedores(ui, { ruta = '/' } = {}) {
+  return render(
+    <MemoryRouter initialEntries={[ruta]}>
+      <AuthProvider>
+        <ProductosProvider>
+          <CarritoProvider>{ui}</CarritoProvider>
+        </ProductosProvider>
+      </AuthProvider>
+    </MemoryRouter>
+  )
+}
+
+export async function esperarEfectos() {
+  await act(async () => {})
+  await act(async () => {})
+}
 ```
 
-### Anexo C: Ubicación de archivos
+### Anexo C: ubicación de archivos
 
 ```
 fullstack2/
-└── level-up-react/
-    ├── src/                      → código fuente analizado
-    │   ├── components/
-    │   ├── context/
-    │   ├── pages/
-    │   ├── utils/
-    │   └── App.jsx
-    ├── tests/                    → pruebas unitarias (Jasmine)
-    │   ├── setup.js
-    │   └── utils.jsx
-    ├── coverage/                 → resultados de cobertura
-    │   ├── coverage-final.json
-    │   └── html/
-    │       └── index.html
-    ├── karma.conf.cjs
-    ├── karma.pp.cjs
-    ├── generar-cobertura.cjs
-    └── package.json
+├── level-up-react/
+│   ├── src/                      → código fuente analizado
+│   │   ├── api/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── data/
+│   │   ├── pages/
+│   │   ├── utils/
+│   │   └── App.jsx
+│   ├── tests/                    → 190 pruebas Jasmine
+│   │   ├── setup.js
+│   │   ├── utils.jsx
+│   │   ├── fakeBackend.js
+│   │   └── integracion.spec.jsx
+│   ├── coverage/                 → resultados de cobertura
+│   │   ├── coverage-final.json
+│   │   └── html/index.html
+│   ├── karma.conf.cjs
+│   ├── karma.pp.cjs
+│   └── package.json
+└── entregables/
+    └── evidencia/                → capturas y salidas de ejecución
 ```
 
-### Anexo D: Resultado de pruebas
+### Anexo D: resultado de pruebas
 
 ```
-TOTAL: 153 SUCCESS, 0 FAILED
+TOTAL: 190 SUCCESS
+
+Statements   : 94.05% ( 743/790 )
+Branches     : 86.03% ( 462/537 )
+Functions    : 94.24% ( 180/191 )
+Lines        : 94.86% ( 665/701 )
 ```

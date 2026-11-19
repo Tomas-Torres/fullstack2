@@ -1,0 +1,14 @@
+﻿VERIFICACION FINAL - 2026-11-18 21:31:14
+
+HEALTH 8081 -> UP (intento 0)
+HEALTH 8082 -> UP (intento 0)
+HEALTH 8083 -> UP (intento 0)
+HEALTH 8085 -> UP (intento 0)
+LOGIN ADMIN -> rol=ADMIN, token_len=233
+CATALOGO -> total=8, primero=Catan, precio=29990
+REGISTRO -> id=2, rol=CLIENTE
+CARRITO -> unidades=1, subtotal=29990, total=29990
+CUPON LEVELUP10 -> descuento=2999, total=26991
+PAGO -> estado=APROBADO, ultimosDigitos=4444, codigo=e2eaa63d-62be-44eb-ae9a-b164971745e6
+
+RESULTADO: TODOS LOS SERVICIOS RESPONDIERON CORRECTAMENTE

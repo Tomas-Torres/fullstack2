@@ -1,0 +1,1123 @@
+{
+  "info": {
+    "name": "Level-Up Gamer - EP3/EFT",
+    "description": "Coleccion de pruebas de los cuatro microservicios de Level-Up Gamer: login y usuarios (8081), productos y categorias (8082), carrito (8083) y pagos (8085).\n\nOrden recomendado: ejecutar la coleccion completa con el Runner. La carpeta Autenticacion genera los tokens y los IDs que usan las demas carpetas.\n\nCuentas:\n- Administrador: admin@levelup.cl / Admin123!\n- Cliente: se crea automaticamente en el registro aleatorio.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseLogin", "value": "http://localhost:8081" },
+    { "key": "baseProductos", "value": "http://localhost:8082" },
+    { "key": "baseCarrito", "value": "http://localhost:8083" },
+    { "key": "basePagos", "value": "http://localhost:8085" },
+    { "key": "token", "value": "" },
+    { "key": "clienteToken", "value": "" },
+    { "key": "clienteId", "value": "" },
+    { "key": "usuarioCreadoId", "value": "" },
+    { "key": "productoId", "value": "" },
+    { "key": "categoriaId", "value": "1" },
+    { "key": "ordenAprobada", "value": "1001" },
+    { "key": "ordenRechazada", "value": "1002" },
+    { "key": "ordenFondos", "value": "1003" },
+    { "key": "ordenTransferencia", "value": "1004" }
+  ],
+  "item": [
+    {
+      "name": "1. Autenticacion",
+      "item": [
+        {
+          "name": "Login administrador",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "const datos = pm.response.json();",
+                  "pm.test('entrega un token JWT', () => pm.expect(datos.token).to.be.a('string').and.not.empty);",
+                  "pm.test('el rol es ADMIN', () => pm.expect(datos.rol).to.eql('ADMIN'));",
+                  "pm.collectionVariables.set('token', datos.token);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"correo\": \"admin@levelup.cl\",\n  \"password\": \"Admin123!\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseLogin}}/api/auth/login",
+            "description": "Devuelve 200 y el JWT que se usa como Bearer en las demas carpetas."
+          }
+        },
+        {
+          "name": "Registro de cliente nuevo",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const sello = Date.now();",
+                  "pm.collectionVariables.set('correoRegistro', `cliente${sello}@levelup.cl`);"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 201', () => pm.response.to.have.status(201));",
+                  "const datos = pm.response.json();",
+                  "pm.test('el rol asignado es CLIENTE', () => pm.expect(datos.rol).to.eql('CLIENTE'));",
+                  "pm.test('no devuelve la contrasena', () => pm.expect(datos.password).to.be.undefined);",
+                  "pm.collectionVariables.set('clienteId', datos.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Cliente Postman\",\n  \"correo\": \"{{correoRegistro}}\",\n  \"password\": \"Cliente123!\",\n  \"telefono\": \"912345678\",\n  \"region\": \"metropolitana\",\n  \"comuna\": \"Santiago\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseLogin}}/api/usuarios/registro",
+            "description": "Registro publico. El correo cambia en cada ejecucion para evitar el 409."
+          }
+        },
+        {
+          "name": "Login cliente registrado",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "const datos = pm.response.json();",
+                  "pm.test('el rol es CLIENTE', () => pm.expect(datos.rol).to.eql('CLIENTE'));",
+                  "pm.collectionVariables.set('clienteToken', datos.token);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"correo\": \"{{correoRegistro}}\",\n  \"password\": \"Cliente123!\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseLogin}}/api/auth/login",
+            "description": "Obtiene el token del cliente creado en el paso anterior."
+          }
+        },
+        {
+          "name": "Login con contrasena incorrecta (401)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 401', () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"correo\": \"admin@levelup.cl\",\n  \"password\": \"ClaveIncorrecta123!\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseLogin}}/api/auth/login"
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Usuarios",
+      "item": [
+        {
+          "name": "Listar usuarios (ADMIN)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "pm.test('devuelve una lista', () => pm.expect(pm.response.json()).to.be.an('array'));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+            "url": "{{baseLogin}}/api/usuarios"
+          }
+        },
+        {
+          "name": "Obtener usuario por id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "pm.test('incluye el correo', () => pm.expect(pm.response.json().correo).to.be.a('string'));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+            "url": "{{baseLogin}}/api/usuarios/1"
+          }
+        },
+        {
+          "name": "Verificar correo existente",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "pm.test('indica que existe', () => pm.expect(pm.response.json().existe).to.eql(true));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{baseLogin}}/api/usuarios/1/existe"
+          }
+        },
+        {
+          "name": "Crear usuario (ADMIN)",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const sello = Date.now();",
+                  "pm.collectionVariables.set('correoUsuarioNuevo', `usuario${sello}@levelup.cl`);"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 201', () => pm.response.to.have.status(201));",
+                  "const datos = pm.response.json();",
+                  "pm.collectionVariables.set('usuarioCreadoId', datos.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Usuario Creado\",\n  \"correo\": \"{{correoUsuarioNuevo}}\",\n  \"password\": \"Usuario123!\",\n  \"telefono\": \"987654321\",\n  \"region\": \"valparaiso\",\n  \"comuna\": \"Vina del Mar\",\n  \"rol\": \"CLIENTE\",\n  \"activo\": true\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseLogin}}/api/usuarios"
+          }
+        },
+        {
+          "name": "Actualizar usuario (ADMIN)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "pm.test('guarda la nueva comuna', () => pm.expect(pm.response.json().comuna).to.eql('Concon'));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comuna\": \"Concon\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseLogin}}/api/usuarios/{{usuarioCreadoId}}"
+          }
+        },
+        {
+          "name": "Listar usuarios como cliente (403)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 403', () => pm.response.to.have.status(403));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "url": "{{baseLogin}}/api/usuarios"
+          }
+        },
+        {
+          "name": "Listar usuarios sin token (401)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 401', () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{baseLogin}}/api/usuarios"
+          }
+        },
+        {
+          "name": "Eliminar usuario creado (ADMIN)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 204', () => pm.response.to.have.status(204));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+            "url": "{{baseLogin}}/api/usuarios/{{usuarioCreadoId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Productos",
+      "item": [
+        {
+          "name": "Listar productos",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "pm.test('devuelve contenido paginado', () => pm.expect(pm.response.json()).to.have.property('content'));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{baseProductos}}/api/productos"
+          }
+        },
+        {
+          "name": "Listar ofertas",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{baseProductos}}/api/productos/ofertas"
+          }
+        },
+        {
+          "name": "Listar stock critico",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{baseProductos}}/api/productos/criticos"
+          }
+        },
+        {
+          "name": "Obtener producto por id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "pm.test('incluye nombre y precio', () => pm.expect(pm.response.json()).to.include.keys('nombre', 'precio'));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{baseProductos}}/api/productos/1"
+          }
+        },
+        {
+          "name": "Crear producto (ADMIN)",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const sello = Date.now();",
+                  "pm.collectionVariables.set('nombreProductoNuevo', `Producto ${sello}`);"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 201', () => pm.response.to.have.status(201));",
+                  "const datos = pm.response.json();",
+                  "pm.collectionVariables.set('productoId', datos.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"{{nombreProductoNuevo}}\",\n  \"categoriaId\": 1,\n  \"atributo\": \"Producto de prueba Postman\",\n  \"precio\": 19990,\n  \"descuento\": 0,\n  \"stock\": 5,\n  \"imagen\": \"/img/catan.png\",\n  \"activo\": true\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseProductos}}/api/productos"
+          }
+        },
+        {
+          "name": "Actualizar producto (ADMIN)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "pm.test('actualiza el stock', () => pm.expect(pm.response.json().stock).to.eql(7));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"{{nombreProductoNuevo}}\",\n  \"categoriaId\": 1,\n  \"atributo\": \"Producto de prueba Postman\",\n  \"precio\": 18990,\n  \"descuento\": 10,\n  \"stock\": 7,\n  \"imagen\": \"/img/catan.png\",\n  \"activo\": true\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseProductos}}/api/productos/{{productoId}}"
+          }
+        },
+        {
+          "name": "Descontar stock",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  { \"productoId\": {{productoId}}, \"cantidad\": 2 }\n]",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseProductos}}/api/productos/stock/descontar"
+          }
+        },
+        {
+          "name": "Reponer stock",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  { \"productoId\": {{productoId}}, \"cantidad\": 2 }\n]",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseProductos}}/api/productos/stock/reponer"
+          }
+        },
+        {
+          "name": "Crear producto sin token (401)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 401', () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Sin permiso\",\n  \"categoriaId\": 1,\n  \"atributo\": \"x\",\n  \"precio\": 1000,\n  \"stock\": 1,\n  \"imagen\": \"/img/catan.png\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseProductos}}/api/productos"
+          }
+        },
+        {
+          "name": "Eliminar producto creado (ADMIN)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 204', () => pm.response.to.have.status(204));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+            "url": "{{baseProductos}}/api/productos/{{productoId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Categorias",
+      "item": [
+        {
+          "name": "Listar categorias",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "pm.test('devuelve una lista', () => pm.expect(pm.response.json()).to.be.an('array'));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{baseProductos}}/api/categorias"
+          }
+        },
+        {
+          "name": "Crear categoria (ADMIN)",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const sello = Date.now();",
+                  "pm.collectionVariables.set('nombreCategoriaNueva', `Categoria ${sello}`);"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 201', () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set('categoriaId', pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"{{nombreCategoriaNueva}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseProductos}}/api/categorias"
+          }
+        },
+        {
+          "name": "Actualizar categoria (ADMIN)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"{{nombreCategoriaNueva}} editada\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseProductos}}/api/categorias/{{categoriaId}}"
+          }
+        },
+        {
+          "name": "Eliminar categoria (ADMIN)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 204', () => pm.response.to.have.status(204));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+            "url": "{{baseProductos}}/api/categorias/{{categoriaId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Carrito",
+      "item": [
+        {
+          "name": "Ver carrito del cliente",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "pm.test('el carrito tiene items y totales', () => pm.expect(pm.response.json()).to.include.keys('items', 'total'));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "url": "{{baseCarrito}}/api/carritos/{{clienteId}}"
+          }
+        },
+        {
+          "name": "Agregar producto al carrito",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "pm.test('el producto quedo en el carrito', () => pm.expect(pm.response.json().items.length).to.be.greaterThan(0));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productoId\": 1,\n  \"cantidad\": 2\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseCarrito}}/api/carritos/{{clienteId}}/items"
+          }
+        },
+        {
+          "name": "Actualizar cantidad",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "pm.test('total de unidades actualizado', () => pm.expect(pm.response.json().totalUnidades).to.eql(1));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cantidad\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseCarrito}}/api/carritos/{{clienteId}}/items/1"
+          }
+        },
+        {
+          "name": "Aplicar cupon LEVELUP10",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "pm.test('el descuento es mayor a cero', () => pm.expect(pm.response.json().descuento).to.be.greaterThan(0));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigo\": \"LEVELUP10\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseCarrito}}/api/carritos/{{clienteId}}/cupon"
+          }
+        },
+        {
+          "name": "Cupon invalido (400)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 400', () => pm.response.to.have.status(400));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigo\": \"NOEXISTE\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseCarrito}}/api/carritos/{{clienteId}}/cupon"
+          }
+        },
+        {
+          "name": "Quitar cupon",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "pm.test('el descuento vuelve a cero', () => pm.expect(pm.response.json().descuento).to.eql(0));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "url": "{{baseCarrito}}/api/carritos/{{clienteId}}/cupon"
+          }
+        },
+        {
+          "name": "Carrito ajeno (403)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 403', () => pm.response.to.have.status(403));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "url": "{{baseCarrito}}/api/carritos/9999"
+          }
+        },
+        {
+          "name": "Carrito sin token (401)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 401', () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{baseCarrito}}/api/carritos/{{clienteId}}"
+          }
+        },
+        {
+          "name": "Quitar item",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 204', () => pm.response.to.have.status(204));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "url": "{{baseCarrito}}/api/carritos/{{clienteId}}/items/1"
+          }
+        },
+        {
+          "name": "Vaciar carrito",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 204', () => pm.response.to.have.status(204));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "url": "{{baseCarrito}}/api/carritos/{{clienteId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Pagos",
+      "item": [
+        {
+          "name": "Pago aprobado con tarjeta",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 201', () => pm.response.to.have.status(201));",
+                  "pm.test('estado APROBADO', () => pm.expect(pm.response.json().estado).to.eql('APROBADO'));",
+                  "pm.test('guarda solo los ultimos 4 digitos', () => pm.expect(pm.response.json().ultimosDigitos).to.eql('4444'));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ordenId\": {{ordenAprobada}},\n  \"monto\": 29990,\n  \"metodo\": \"TARJETA_CREDITO\",\n  \"numeroTarjeta\": \"4111111111114444\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{basePagos}}/api/pagos"
+          }
+        },
+        {
+          "name": "Pago rechazado por tarjeta (1111)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 201 igualmente', () => pm.response.to.have.status(201));",
+                  "pm.test('estado RECHAZADO', () => pm.expect(pm.response.json().estado).to.eql('RECHAZADO'));",
+                  "pm.test('informa el motivo', () => pm.expect(pm.response.json().motivoRechazo).to.not.be.null);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ordenId\": {{ordenRechazada}},\n  \"monto\": 15990,\n  \"metodo\": \"TARJETA_DEBITO\",\n  \"numeroTarjeta\": \"5222222222221111\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{basePagos}}/api/pagos"
+          }
+        },
+        {
+          "name": "Pago rechazado por fondos (0000)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 201', () => pm.response.to.have.status(201));",
+                  "pm.test('motivo de fondos insuficientes', () => pm.expect(pm.response.json().motivoRechazo).to.eql('Fondos insuficientes'));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ordenId\": {{ordenFondos}},\n  \"monto\": 999990,\n  \"metodo\": \"TARJETA_CREDITO\",\n  \"numeroTarjeta\": \"4111111111110000\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{basePagos}}/api/pagos"
+          }
+        },
+        {
+          "name": "Transferencia aprobada sin tarjeta",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 201', () => pm.response.to.have.status(201));",
+                  "pm.test('estado APROBADO', () => pm.expect(pm.response.json().estado).to.eql('APROBADO'));",
+                  "pm.test('sin ultimos digitos', () => pm.expect(pm.response.json().ultimosDigitos).to.be.null);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ordenId\": {{ordenTransferencia}},\n  \"monto\": 15000,\n  \"metodo\": \"TRANSFERENCIA\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{basePagos}}/api/pagos"
+          }
+        },
+        {
+          "name": "Tarjeta sin numero (400)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 400', () => pm.response.to.have.status(400));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ordenId\": 1005,\n  \"monto\": 10000,\n  \"metodo\": \"TARJETA_CREDITO\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{basePagos}}/api/pagos"
+          }
+        },
+        {
+          "name": "Consultar pagos de una orden",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));",
+                  "pm.test('devuelve una lista', () => pm.expect(pm.response.json()).to.be.an('array'));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "url": "{{basePagos}}/api/pagos/orden/{{ordenAprobada}}"
+          }
+        },
+        {
+          "name": "Historial de pagos (ADMIN)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 200', () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+            "url": "{{basePagos}}/api/pagos"
+          }
+        },
+        {
+          "name": "Historial como cliente (403)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('responde 403', () => pm.response.to.have.status(403));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{clienteToken}}", "type": "string" }] },
+            "url": "{{basePagos}}/api/pagos"
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Salud de los servicios",
+      "item": [
+        {
+          "name": "Health ms-login (8081)",
+          "event": [
+            { "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('responde 200 y UP', () => { pm.response.to.have.status(200); pm.expect(pm.response.json().status).to.eql('UP'); });"] } }
+          ],
+          "request": { "method": "GET", "url": "{{baseLogin}}/actuator/health" }
+        },
+        {
+          "name": "Health ms-productos (8082)",
+          "event": [
+            { "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('responde 200 y UP', () => { pm.response.to.have.status(200); pm.expect(pm.response.json().status).to.eql('UP'); });"] } }
+          ],
+          "request": { "method": "GET", "url": "{{baseProductos}}/actuator/health" }
+        },
+        {
+          "name": "Health ms-carrito (8083)",
+          "event": [
+            { "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('responde 200 y UP', () => { pm.response.to.have.status(200); pm.expect(pm.response.json().status).to.eql('UP'); });"] } }
+          ],
+          "request": { "method": "GET", "url": "{{baseCarrito}}/actuator/health" }
+        },
+        {
+          "name": "Health ms-pagos (8085)",
+          "event": [
+            { "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('responde 200 y UP', () => { pm.response.to.have.status(200); pm.expect(pm.response.json().status).to.eql('UP'); });"] } }
+          ],
+          "request": { "method": "GET", "url": "{{basePagos}}/actuator/health" }
+        }
+      ]
+    }
+  ]
+}

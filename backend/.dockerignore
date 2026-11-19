@@ -1,0 +1,8 @@
+# Ignora artefactos de compilacion y datos locales para acelerar el build.
+**/target/
+.git
+.gitignore
+.env
+*.log
+scripts/
+db/*.sql
