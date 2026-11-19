@@ -2,471 +2,468 @@
 > level-up-react@0.0.0 test
 > karma start karma.conf.cjs --single-run
 
-[32m18 11 2026 21:20:18.862:INFO [karma-server]: [39mKarma v6.4.4 server started at http://localhost:9876/
-[32m18 11 2026 21:20:18.864:INFO [launcher]: [39mLaunching browsers ChromeHeadlessNoSandbox with concurrency 1
-[32m18 11 2026 21:20:18.874:INFO [launcher]: [39mStarting browser ChromeHeadless
-[32m18 11 2026 21:20:21.676:INFO [Edge 157.0.0.0 (Windows 10)]: [39mConnected on socket mQhid3jW3uPKX3UYAAAA with id 13309646
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[32m18 11 2026 23:14:45.946:INFO [karma-server]: [39mKarma v6.4.4 server started at http://localhost:9876/
+[32m18 11 2026 23:14:45.969:INFO [launcher]: [39mLaunching browsers ChromeHeadlessNoSandbox with concurrency 1
+[32m18 11 2026 23:14:45.997:INFO [launcher]: [39mStarting browser ChromeHeadless
+[32m18 11 2026 23:14:47.103:INFO [Edge 157.0.0.0 (Windows 10)]: [39mConnected on socket ecZzfdFqGR7pJsUdAAAA with id 69368229
+[33m18 11 2026 23:14:47.114:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/App.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.114:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/components/Campo.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/components/Footer.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/components/Header.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/components/ProductCard.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/components/RutaAdmin.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/context/AuthContext.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/context/CarritoContext.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/context/ProductosContext.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/integracion.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/pages/Admin.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/pages/Carrito.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/pages/Categorias.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/pages/Checkout.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/pages/CompraExitosa.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/pages/CompraFallida.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/pages/Home.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/pages/Login.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/pages/Ofertas.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/pages/ProductoDetalle.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/pages/Productos.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
-[33m18 11 2026 21:20:21.689:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
+[33m18 11 2026 23:14:47.115:WARN [middleware:karma]: [39mUnable to determine file type from the file extension, defaulting to js.
   To silence the warning specify a valid type for C:/Users/tomas/OneDrive/Desktop/Level-UP/fullstack2/level-up-react/tests/pages/Registro.spec.jsx in the configuration file.
   See https://karma-runner.github.io/latest/config/files.html
 Edge 157.0.0.0 (Windows 10): Executed 0 of 190[32m SUCCESS[39m (0 secs / 0 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 1 of 190[32m SUCCESS[39m (0 secs / 0.018 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 2 of 190[32m SUCCESS[39m (0 secs / 0.019 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 3 of 190[32m SUCCESS[39m (0 secs / 0.019 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 4 of 190[32m SUCCESS[39m (0 secs / 0.019 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 5 of 190[32m SUCCESS[39m (0 secs / 0.019 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 6 of 190[32m SUCCESS[39m (0 secs / 0.019 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 7 of 190[32m SUCCESS[39m (0 secs / 0.019 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 8 of 190[32m SUCCESS[39m (0 secs / 0.019 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 9 of 190[32m SUCCESS[39m (0 secs / 0.019 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 10 of 190[32m SUCCESS[39m (0 secs / 0.054 secs)
-[33m18 11 2026 21:20:22.664:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[33m18 11 2026 21:20:22.665:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:22.666:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:22.667:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:22.667:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 11 of 190[32m SUCCESS[39m (0 secs / 0.063 secs)
-[33m18 11 2026 21:20:22.673:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:22.673:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:22.673:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:22.674:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 12 of 190[32m SUCCESS[39m (0 secs / 0.066 secs)
-[33m18 11 2026 21:20:22.681:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 13 of 190[32m SUCCESS[39m (0 secs / 0.069 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 14 of 190[32m SUCCESS[39m (0 secs / 0.079 secs)
-[33m18 11 2026 21:20:22.694:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 15 of 190[32m SUCCESS[39m (0 secs / 0.083 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 16 of 190[32m SUCCESS[39m (0 secs / 0.09 secs)
-[33m18 11 2026 21:20:22.706:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[33m18 11 2026 21:20:22.707:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:22.707:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:22.707:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:22.707:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:22.708:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:22.709:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 17 of 190[32m SUCCESS[39m (0 secs / 0.094 secs)
-[33m18 11 2026 21:20:22.712:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:22.713:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 18 of 190[32m SUCCESS[39m (0 secs / 0.097 secs)
-[33m18 11 2026 21:20:22.716:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[33m18 11 2026 21:20:22.716:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:22.716:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 19 of 190[32m SUCCESS[39m (0 secs / 0.1 secs)
-[33m18 11 2026 21:20:22.718:WARN [web-server]: [39m404: /img/catan.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 20 of 190[32m SUCCESS[39m (0 secs / 0.102 secs)
-[33m18 11 2026 21:20:22.720:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 21 of 190[32m SUCCESS[39m (0 secs / 0.105 secs)
-[33m18 11 2026 21:20:22.723:WARN [web-server]: [39m404: /img/catan.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 22 of 190[32m SUCCESS[39m (0 secs / 0.107 secs)
-[33m18 11 2026 21:20:22.725:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 23 of 190[32m SUCCESS[39m (0 secs / 0.109 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 24 of 190[32m SUCCESS[39m (0 secs / 0.11 secs)
-[33m18 11 2026 21:20:22.731:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 25 of 190[32m SUCCESS[39m (0 secs / 0.117 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 26 of 190[32m SUCCESS[39m (0 secs / 0.118 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 27 of 190[32m SUCCESS[39m (0 secs / 0.119 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 28 of 190[32m SUCCESS[39m (0 secs / 0.121 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 29 of 190[32m SUCCESS[39m (0 secs / 0.121 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 30 of 190[32m SUCCESS[39m (0 secs / 0.122 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 31 of 190[32m SUCCESS[39m (0 secs / 0.13 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 32 of 190[32m SUCCESS[39m (0 secs / 0.269 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 33 of 190[32m SUCCESS[39m (0 secs / 0.281 secs)
-[33m18 11 2026 21:20:22.904:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 34 of 190[32m SUCCESS[39m (0 secs / 0.283 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 35 of 190[32m SUCCESS[39m (0 secs / 0.285 secs)
-[33m18 11 2026 21:20:22.910:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 36 of 190[32m SUCCESS[39m (0 secs / 0.286 secs)
-[33m18 11 2026 21:20:22.914:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 37 of 190[32m SUCCESS[39m (0 secs / 0.298 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 38 of 190[32m SUCCESS[39m (0 secs / 0.3 secs)
-[33m18 11 2026 21:20:22.926:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 1 of 190[32m SUCCESS[39m (0 secs / 0.023 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 2 of 190[32m SUCCESS[39m (0 secs / 0.023 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 3 of 190[32m SUCCESS[39m (0 secs / 0.023 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 4 of 190[32m SUCCESS[39m (0 secs / 0.024 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 5 of 190[32m SUCCESS[39m (0 secs / 0.024 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 6 of 190[32m SUCCESS[39m (0 secs / 0.024 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 7 of 190[32m SUCCESS[39m (0 secs / 0.025 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 8 of 190[32m SUCCESS[39m (0 secs / 0.026 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 9 of 190[32m SUCCESS[39m (0 secs / 0.026 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 10 of 190[32m SUCCESS[39m (0 secs / 0.075 secs)
+[33m18 11 2026 23:14:48.081:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[33m18 11 2026 23:14:48.082:WARN [web-server]: [39m404: /img/catan.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 11 of 190[32m SUCCESS[39m (0 secs / 0.086 secs)
+[33m18 11 2026 23:14:48.082:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:48.083:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:48.083:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:48.084:WARN [web-server]: [39m404: /img/gta_6.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 12 of 190[32m SUCCESS[39m (0 secs / 0.09 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 13 of 190[32m SUCCESS[39m (0 secs / 0.095 secs)
+[33m18 11 2026 23:14:48.087:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:48.088:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[33m18 11 2026 23:14:48.088:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 14 of 190[32m SUCCESS[39m (0 secs / 0.117 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 15 of 190[32m SUCCESS[39m (0 secs / 0.121 secs)
+[33m18 11 2026 23:14:48.107:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 16 of 190[32m SUCCESS[39m (0 secs / 0.129 secs)
+[33m18 11 2026 23:14:48.117:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:48.117:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:48.117:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:48.117:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:48.118:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:48.118:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:48.119:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 17 of 190[32m SUCCESS[39m (0 secs / 0.132 secs)
+[33m18 11 2026 23:14:48.120:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 18 of 190[32m SUCCESS[39m (0 secs / 0.135 secs)
+[33m18 11 2026 23:14:48.126:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[33m18 11 2026 23:14:48.126:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 19 of 190[32m SUCCESS[39m (0 secs / 0.138 secs)
+[33m18 11 2026 23:14:48.128:WARN [web-server]: [39m404: /img/catan.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 20 of 190[32m SUCCESS[39m (0 secs / 0.14 secs)
+[33m18 11 2026 23:14:48.130:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 21 of 190[32m SUCCESS[39m (0 secs / 0.143 secs)
+[33m18 11 2026 23:14:48.134:WARN [web-server]: [39m404: /img/catan.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 22 of 190[32m SUCCESS[39m (0 secs / 0.145 secs)
+[33m18 11 2026 23:14:48.137:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 23 of 190[32m SUCCESS[39m (0 secs / 0.148 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 24 of 190[32m SUCCESS[39m (0 secs / 0.151 secs)
+[33m18 11 2026 23:14:48.142:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 25 of 190[32m SUCCESS[39m (0 secs / 0.158 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 26 of 190[32m SUCCESS[39m (0 secs / 0.159 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 27 of 190[32m SUCCESS[39m (0 secs / 0.16 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 28 of 190[32m SUCCESS[39m (0 secs / 0.16 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 29 of 190[32m SUCCESS[39m (0 secs / 0.16 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 30 of 190[32m SUCCESS[39m (0 secs / 0.161 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 31 of 190[32m SUCCESS[39m (0 secs / 0.17 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 32 of 190[32m SUCCESS[39m (0 secs / 0.329 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 33 of 190[32m SUCCESS[39m (0 secs / 0.342 secs)
+[33m18 11 2026 23:14:48.337:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 34 of 190[32m SUCCESS[39m (0 secs / 0.344 secs)
+[33m18 11 2026 23:14:48.342:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 35 of 190[32m SUCCESS[39m (0 secs / 0.347 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 36 of 190[32m SUCCESS[39m (0 secs / 0.35 secs)
+[33m18 11 2026 23:14:48.349:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 37 of 190[32m SUCCESS[39m (0 secs / 0.364 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 38 of 190[32m SUCCESS[39m (0 secs / 0.366 secs)
+[33m18 11 2026 23:14:48.366:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
 [1A[2KWARN: [36m'No routes matched location "/" '[39m
-Edge 157.0.0.0 (Windows 10): Executed 38 of 190[32m SUCCESS[39m (0 secs / 0.3 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 39 of 190[32m SUCCESS[39m (0 secs / 0.351 secs)
+Edge 157.0.0.0 (Windows 10): Executed 38 of 190[32m SUCCESS[39m (0 secs / 0.366 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 39 of 190[32m SUCCESS[39m (0 secs / 0.421 secs)
 [1A[2KWARN: [36m'No routes matched location "/" '[39m
-Edge 157.0.0.0 (Windows 10): Executed 39 of 190[32m SUCCESS[39m (0 secs / 0.351 secs)
-[33m18 11 2026 21:20:22.979:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 40 of 190[32m SUCCESS[39m (0 secs / 0.356 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 41 of 190[32m SUCCESS[39m (0 secs / 0.365 secs)
-[33m18 11 2026 21:20:22.992:WARN [web-server]: [39m404: /img/catan.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 42 of 190[32m SUCCESS[39m (0 secs / 0.367 secs)
-[33m18 11 2026 21:20:22.997:WARN [web-server]: [39m404: /img/catan.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 43 of 190[32m SUCCESS[39m (0 secs / 0.373 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 44 of 190[32m SUCCESS[39m (0 secs / 0.375 secs)
-[33m18 11 2026 21:20:23.003:WARN [web-server]: [39m404: /img/catan.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 45 of 190[32m SUCCESS[39m (0 secs / 0.376 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 46 of 190[32m SUCCESS[39m (0 secs / 0.385 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 47 of 190[32m SUCCESS[39m (0 secs / 0.386 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 48 of 190[32m SUCCESS[39m (0 secs / 0.387 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 49 of 190[32m SUCCESS[39m (0 secs / 0.392 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 50 of 190[32m SUCCESS[39m (0 secs / 0.394 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 51 of 190[32m SUCCESS[39m (0 secs / 0.395 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 52 of 190[32m SUCCESS[39m (0 secs / 0.396 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 53 of 190[32m SUCCESS[39m (0 secs / 0.396 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 54 of 190[32m SUCCESS[39m (0 secs / 0.397 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 55 of 190[32m SUCCESS[39m (0 secs / 0.398 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 56 of 190[32m SUCCESS[39m (0 secs / 0.399 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 57 of 190[32m SUCCESS[39m (0 secs / 0.399 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 58 of 190[32m SUCCESS[39m (0 secs / 0.4 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 59 of 190[32m SUCCESS[39m (0 secs / 0.401 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 60 of 190[32m SUCCESS[39m (0 secs / 0.407 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 61 of 190[32m SUCCESS[39m (0 secs / 0.409 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 62 of 190[32m SUCCESS[39m (0 secs / 0.41 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 63 of 190[32m SUCCESS[39m (0 secs / 0.411 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 64 of 190[32m SUCCESS[39m (0 secs / 0.412 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 65 of 190[32m SUCCESS[39m (0 secs / 0.412 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 66 of 190[32m SUCCESS[39m (0 secs / 0.413 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 67 of 190[32m SUCCESS[39m (0 secs / 0.414 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 68 of 190[32m SUCCESS[39m (0 secs / 0.414 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 69 of 190[32m SUCCESS[39m (0 secs / 0.414 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 70 of 190[32m SUCCESS[39m (0 secs / 0.414 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 71 of 190[32m SUCCESS[39m (0 secs / 0.415 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 72 of 190[32m SUCCESS[39m (0 secs / 0.416 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 73 of 190[32m SUCCESS[39m (0 secs / 0.417 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 74 of 190[32m SUCCESS[39m (0 secs / 0.417 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 75 of 190[32m SUCCESS[39m (0 secs / 0.419 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 76 of 190[32m SUCCESS[39m (0 secs / 0.42 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 77 of 190[32m SUCCESS[39m (0 secs / 0.421 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 78 of 190[32m SUCCESS[39m (0 secs / 0.422 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 79 of 190[32m SUCCESS[39m (0 secs / 0.423 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 80 of 190[32m SUCCESS[39m (0 secs / 0.424 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 81 of 190[32m SUCCESS[39m (0 secs / 0.425 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 82 of 190[32m SUCCESS[39m (0 secs / 0.426 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 83 of 190[32m SUCCESS[39m (0 secs / 0.432 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 84 of 190[32m SUCCESS[39m (0 secs / 0.434 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 85 of 190[32m SUCCESS[39m (0 secs / 0.435 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 86 of 190[32m SUCCESS[39m (0 secs / 0.436 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 87 of 190[32m SUCCESS[39m (0 secs / 0.437 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 88 of 190[32m SUCCESS[39m (0 secs / 0.438 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 89 of 190[32m SUCCESS[39m (0 secs / 0.439 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 90 of 190[32m SUCCESS[39m (0 secs / 0.439 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 91 of 190[32m SUCCESS[39m (0 secs / 0.439 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 92 of 190[32m SUCCESS[39m (0 secs / 0.439 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 93 of 190[32m SUCCESS[39m (0 secs / 0.439 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 94 of 190[32m SUCCESS[39m (0 secs / 0.44 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 95 of 190[32m SUCCESS[39m (0 secs / 0.44 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 96 of 190[32m SUCCESS[39m (0 secs / 0.44 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 97 of 190[32m SUCCESS[39m (0 secs / 0.447 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 98 of 190[32m SUCCESS[39m (0 secs / 0.449 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 99 of 190[32m SUCCESS[39m (0 secs / 0.45 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 100 of 190[32m SUCCESS[39m (0 secs / 0.451 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 101 of 190[32m SUCCESS[39m (0 secs / 0.453 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 102 of 190[32m SUCCESS[39m (0 secs / 0.453 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 103 of 190[32m SUCCESS[39m (0 secs / 0.454 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 104 of 190[32m SUCCESS[39m (0 secs / 0.454 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 105 of 190[32m SUCCESS[39m (0 secs / 0.469 secs)
-[33m18 11 2026 21:20:23.107:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:23.107:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:23.107:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:23.108:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:23.108:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:23.108:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:23.109:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:23.109:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 106 of 190[32m SUCCESS[39m (0 secs / 0.494 secs)
-[33m18 11 2026 21:20:23.137:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:23.137:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:23.138:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:23.138:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:23.138:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:23.138:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:23.138:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:23.139:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[33m18 11 2026 21:20:23.520:WARN [web-server]: [39m404: /img/teclado.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 107 of 190[32m SUCCESS[39m (0 secs / 0.894 secs)
-[33m18 11 2026 21:20:23.537:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:23.538:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:23.539:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:23.539:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:23.539:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:23.540:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:23.541:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:23.542:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 108 of 190[32m SUCCESS[39m (0 secs / 0.99 secs)
-[33m18 11 2026 21:20:23.632:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:23.632:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:23.632:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:23.633:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:23.633:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:23.633:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:23.633:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:23.634:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 109 of 190[32m SUCCESS[39m (0 secs / 1.01 secs)
-[33m18 11 2026 21:20:23.652:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:23.652:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:23.652:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:23.652:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:23.652:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:23.652:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:23.653:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:23.654:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 110 of 190[32m SUCCESS[39m (0 secs / 1.018 secs)
-[33m18 11 2026 21:20:23.660:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:23.660:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:23.660:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:23.660:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:23.660:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:23.660:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:23.661:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 111 of 190[32m SUCCESS[39m (0 secs / 1.026 secs)
-[33m18 11 2026 21:20:23.668:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:23.668:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:23.668:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:23.668:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:23.668:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:23.668:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:23.669:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:23.671:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 112 of 190[32m SUCCESS[39m (0 secs / 1.035 secs)
-[33m18 11 2026 21:20:23.679:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:23.679:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:23.679:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:23.680:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:23.680:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:23.680:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:23.681:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:23.681:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 113 of 190[32m SUCCESS[39m (0 secs / 1.346 secs)
-[33m18 11 2026 21:20:23.990:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:23.990:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:23.990:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:23.991:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:23.991:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:23.991:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:23.992:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:23.992:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 114 of 190[32m SUCCESS[39m (0 secs / 1.511 secs)
-[33m18 11 2026 21:20:24.155:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:24.155:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:24.156:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:24.156:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:24.156:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:24.156:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:24.156:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:24.157:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 115 of 190[32m SUCCESS[39m (0 secs / 1.546 secs)
-[33m18 11 2026 21:20:24.195:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:24.195:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:24.195:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:24.195:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:24.196:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:24.196:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:24.196:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:24.197:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 116 of 190[32m SUCCESS[39m (0 secs / 1.573 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 117 of 190[32m SUCCESS[39m (0 secs / 1.585 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 118 of 190[32m SUCCESS[39m (0 secs / 1.587 secs)
-[33m18 11 2026 21:20:24.233:WARN [web-server]: [39m404: /img/pc.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 119 of 190[32m SUCCESS[39m (0 secs / 1.595 secs)
-[33m18 11 2026 21:20:24.243:WARN [web-server]: [39m404: /img/pc.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 120 of 190[32m SUCCESS[39m (0 secs / 1.601 secs)
-[33m18 11 2026 21:20:24.248:WARN [web-server]: [39m404: /img/pc.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 121 of 190[32m SUCCESS[39m (0 secs / 1.657 secs)
-[33m18 11 2026 21:20:24.305:WARN [web-server]: [39m404: /img/pc.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 122 of 190[32m SUCCESS[39m (0 secs / 1.803 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 123 of 190[32m SUCCESS[39m (0 secs / 1.808 secs)
-[33m18 11 2026 21:20:24.461:WARN [web-server]: [39m404: /img/pc.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 124 of 190[32m SUCCESS[39m (0 secs / 1.817 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 125 of 190[32m SUCCESS[39m (0 secs / 1.833 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 126 of 190[32m SUCCESS[39m (0 secs / 1.837 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 127 of 190[32m SUCCESS[39m (0 secs / 1.843 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 128 of 190[32m SUCCESS[39m (0 secs / 1.851 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 129 of 190[32m SUCCESS[39m (0 secs / 1.872 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 130 of 190[32m SUCCESS[39m (0 secs / 1.874 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 131 of 190[32m SUCCESS[39m (0 secs / 1.893 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 132 of 190[32m SUCCESS[39m (0 secs / 1.902 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 133 of 190[32m SUCCESS[39m (0 secs / 1.921 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 134 of 190[32m SUCCESS[39m (0 secs / 2.084 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 135 of 190[32m SUCCESS[39m (0 secs / 2.089 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 136 of 190[32m SUCCESS[39m (0 secs / 2.096 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 137 of 190[32m SUCCESS[39m (0 secs / 2.453 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 138 of 190[32m SUCCESS[39m (0 secs / 2.706 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 139 of 190[32m SUCCESS[39m (0 secs / 2.965 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 140 of 190[32m SUCCESS[39m (0 secs / 3.128 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 141 of 190[32m SUCCESS[39m (0 secs / 3.312 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 142 of 190[32m SUCCESS[39m (0 secs / 3.568 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 143 of 190[32m SUCCESS[39m (0 secs / 3.572 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 144 of 190[32m SUCCESS[39m (0 secs / 3.584 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 145 of 190[32m SUCCESS[39m (0 secs / 3.586 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 146 of 190[32m SUCCESS[39m (0 secs / 3.587 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 147 of 190[32m SUCCESS[39m (0 secs / 3.589 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 148 of 190[32m SUCCESS[39m (0 secs / 3.591 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 149 of 190[32m SUCCESS[39m (0 secs / 3.592 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 150 of 190[32m SUCCESS[39m (0 secs / 3.602 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 151 of 190[32m SUCCESS[39m (0 secs / 3.603 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 152 of 190[32m SUCCESS[39m (0 secs / 3.604 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 153 of 190[32m SUCCESS[39m (0 secs / 3.617 secs)
-[33m18 11 2026 21:20:26.283:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:26.286:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:26.286:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:26.286:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 154 of 190[32m SUCCESS[39m (0 secs / 3.622 secs)
-[33m18 11 2026 21:20:26.293:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:26.293:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:26.293:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:26.293:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 155 of 190[32m SUCCESS[39m (0 secs / 3.635 secs)
-[33m18 11 2026 21:20:26.314:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 156 of 190[32m SUCCESS[39m (0 secs / 3.655 secs)
-[33m18 11 2026 21:20:26.324:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 157 of 190[32m SUCCESS[39m (0 secs / 3.76 secs)
-[33m18 11 2026 21:20:26.429:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 158 of 190[32m SUCCESS[39m (0 secs / 3.943 secs)
-[33m18 11 2026 21:20:26.616:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 159 of 190[32m SUCCESS[39m (0 secs / 4.133 secs)
-[33m18 11 2026 21:20:26.806:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 160 of 190[32m SUCCESS[39m (0 secs / 4.315 secs)
-[33m18 11 2026 21:20:26.988:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 161 of 190[32m SUCCESS[39m (0 secs / 4.542 secs)
-[33m18 11 2026 21:20:27.215:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 162 of 190[32m SUCCESS[39m (0 secs / 4.717 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 163 of 190[32m SUCCESS[39m (0 secs / 4.731 secs)
-[33m18 11 2026 21:20:27.403:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:27.403:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:27.404:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 164 of 190[32m SUCCESS[39m (0 secs / 4.734 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 165 of 190[32m SUCCESS[39m (0 secs / 4.736 secs)
-[33m18 11 2026 21:20:27.411:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:27.411:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:27.411:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 166 of 190[32m SUCCESS[39m (0 secs / 4.746 secs)
-[33m18 11 2026 21:20:27.423:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:27.424:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:27.424:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 167 of 190[32m SUCCESS[39m (0 secs / 4.752 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 168 of 190[32m SUCCESS[39m (0 secs / 4.764 secs)
-[33m18 11 2026 21:20:27.438:WARN [web-server]: [39m404: /img/catan.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 169 of 190[32m SUCCESS[39m (0 secs / 4.766 secs)
-[33m18 11 2026 21:20:27.441:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 170 of 190[32m SUCCESS[39m (0 secs / 4.769 secs)
-[33m18 11 2026 21:20:27.444:WARN [web-server]: [39m404: /img/catan.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 171 of 190[32m SUCCESS[39m (0 secs / 4.771 secs)
-[33m18 11 2026 21:20:27.448:WARN [web-server]: [39m404: /img/catan.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 172 of 190[32m SUCCESS[39m (0 secs / 4.779 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 173 of 190[32m SUCCESS[39m (0 secs / 4.78 secs)
-[33m18 11 2026 21:20:27.456:WARN [web-server]: [39m404: /img/gta_6.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 174 of 190[32m SUCCESS[39m (0 secs / 4.781 secs)
-[33m18 11 2026 21:20:27.458:WARN [web-server]: [39m404: /img/control_xbox.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 175 of 190[32m SUCCESS[39m (0 secs / 4.796 secs)
-[33m18 11 2026 21:20:27.474:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:27.474:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:27.474:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:27.475:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:27.476:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:27.476:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:27.477:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 176 of 190[32m SUCCESS[39m (0 secs / 4.802 secs)
-[33m18 11 2026 21:20:27.480:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:27.486:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:27.486:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:27.487:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:27.487:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:27.487:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:27.487:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:27.487:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:27.488:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 177 of 190[32m SUCCESS[39m (0 secs / 4.82 secs)
-[33m18 11 2026 21:20:27.504:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:27.504:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:27.504:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:27.504:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:27.504:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:27.505:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:27.505:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:27.505:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 178 of 190[32m SUCCESS[39m (0 secs / 4.841 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 179 of 190[32m SUCCESS[39m (0 secs / 4.844 secs)
-[33m18 11 2026 21:20:27.523:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:27.523:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 180 of 190[32m SUCCESS[39m (0 secs / 4.845 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 181 of 190[32m SUCCESS[39m (0 secs / 4.847 secs)
-[33m18 11 2026 21:20:27.531:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:27.531:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:27.532:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:27.532:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:27.532:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:27.532:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:27.532:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:27.533:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 182 of 190[32m SUCCESS[39m (0 secs / 4.857 secs)
-[33m18 11 2026 21:20:27.539:WARN [web-server]: [39m404: /img/catan.png
-[33m18 11 2026 21:20:27.543:WARN [web-server]: [39m404: /img/Carcassonne.webp
-[33m18 11 2026 21:20:27.543:WARN [web-server]: [39m404: /img/control_xbox.png
-[33m18 11 2026 21:20:27.543:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
-[33m18 11 2026 21:20:27.543:WARN [web-server]: [39m404: /img/gta_6.webp
-[33m18 11 2026 21:20:27.544:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
-[33m18 11 2026 21:20:27.544:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
-[33m18 11 2026 21:20:27.544:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 183 of 190[32m SUCCESS[39m (0 secs / 4.863 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 184 of 190[32m SUCCESS[39m (0 secs / 4.887 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 185 of 190[32m SUCCESS[39m (0 secs / 4.897 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 186 of 190[32m SUCCESS[39m (0 secs / 5.296 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 187 of 190[32m SUCCESS[39m (0 secs / 5.751 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 188 of 190[32m SUCCESS[39m (0 secs / 6.252 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 189 of 190[32m SUCCESS[39m (0 secs / 6.727 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 190 of 190[32m SUCCESS[39m (0 secs / 7.193 secs)
-[1A[2KEdge 157.0.0.0 (Windows 10): Executed 190 of 190[32m SUCCESS[39m (7.275 secs / 7.193 secs)
+Edge 157.0.0.0 (Windows 10): Executed 39 of 190[32m SUCCESS[39m (0 secs / 0.421 secs)
+[33m18 11 2026 23:14:48.424:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 40 of 190[32m SUCCESS[39m (0 secs / 0.426 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 41 of 190[32m SUCCESS[39m (0 secs / 0.436 secs)
+[33m18 11 2026 23:14:48.437:WARN [web-server]: [39m404: /img/catan.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 42 of 190[32m SUCCESS[39m (0 secs / 0.439 secs)
+[33m18 11 2026 23:14:48.444:WARN [web-server]: [39m404: /img/catan.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 43 of 190[32m SUCCESS[39m (0 secs / 0.445 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 44 of 190[32m SUCCESS[39m (0 secs / 0.446 secs)
+[33m18 11 2026 23:14:48.450:WARN [web-server]: [39m404: /img/catan.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 45 of 190[32m SUCCESS[39m (0 secs / 0.448 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 46 of 190[32m SUCCESS[39m (0 secs / 0.46 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 47 of 190[32m SUCCESS[39m (0 secs / 0.462 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 48 of 190[32m SUCCESS[39m (0 secs / 0.464 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 49 of 190[32m SUCCESS[39m (0 secs / 0.471 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 50 of 190[32m SUCCESS[39m (0 secs / 0.473 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 51 of 190[32m SUCCESS[39m (0 secs / 0.474 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 52 of 190[32m SUCCESS[39m (0 secs / 0.475 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 53 of 190[32m SUCCESS[39m (0 secs / 0.476 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 54 of 190[32m SUCCESS[39m (0 secs / 0.478 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 55 of 190[32m SUCCESS[39m (0 secs / 0.48 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 56 of 190[32m SUCCESS[39m (0 secs / 0.481 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 57 of 190[32m SUCCESS[39m (0 secs / 0.482 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 58 of 190[32m SUCCESS[39m (0 secs / 0.483 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 59 of 190[32m SUCCESS[39m (0 secs / 0.484 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 60 of 190[32m SUCCESS[39m (0 secs / 0.49 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 61 of 190[32m SUCCESS[39m (0 secs / 0.492 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 62 of 190[32m SUCCESS[39m (0 secs / 0.493 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 63 of 190[32m SUCCESS[39m (0 secs / 0.494 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 64 of 190[32m SUCCESS[39m (0 secs / 0.496 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 65 of 190[32m SUCCESS[39m (0 secs / 0.496 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 66 of 190[32m SUCCESS[39m (0 secs / 0.497 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 67 of 190[32m SUCCESS[39m (0 secs / 0.498 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 68 of 190[32m SUCCESS[39m (0 secs / 0.499 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 69 of 190[32m SUCCESS[39m (0 secs / 0.5 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 70 of 190[32m SUCCESS[39m (0 secs / 0.501 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 71 of 190[32m SUCCESS[39m (0 secs / 0.502 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 72 of 190[32m SUCCESS[39m (0 secs / 0.503 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 73 of 190[32m SUCCESS[39m (0 secs / 0.504 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 74 of 190[32m SUCCESS[39m (0 secs / 0.505 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 75 of 190[32m SUCCESS[39m (0 secs / 0.506 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 76 of 190[32m SUCCESS[39m (0 secs / 0.508 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 77 of 190[32m SUCCESS[39m (0 secs / 0.509 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 78 of 190[32m SUCCESS[39m (0 secs / 0.51 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 79 of 190[32m SUCCESS[39m (0 secs / 0.511 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 80 of 190[32m SUCCESS[39m (0 secs / 0.512 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 81 of 190[32m SUCCESS[39m (0 secs / 0.513 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 82 of 190[32m SUCCESS[39m (0 secs / 0.514 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 83 of 190[32m SUCCESS[39m (0 secs / 0.521 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 84 of 190[32m SUCCESS[39m (0 secs / 0.523 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 85 of 190[32m SUCCESS[39m (0 secs / 0.524 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 86 of 190[32m SUCCESS[39m (0 secs / 0.526 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 87 of 190[32m SUCCESS[39m (0 secs / 0.527 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 88 of 190[32m SUCCESS[39m (0 secs / 0.528 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 89 of 190[32m SUCCESS[39m (0 secs / 0.529 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 90 of 190[32m SUCCESS[39m (0 secs / 0.531 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 91 of 190[32m SUCCESS[39m (0 secs / 0.531 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 92 of 190[32m SUCCESS[39m (0 secs / 0.532 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 93 of 190[32m SUCCESS[39m (0 secs / 0.532 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 94 of 190[32m SUCCESS[39m (0 secs / 0.532 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 95 of 190[32m SUCCESS[39m (0 secs / 0.533 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 96 of 190[32m SUCCESS[39m (0 secs / 0.533 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 97 of 190[32m SUCCESS[39m (0 secs / 0.541 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 98 of 190[32m SUCCESS[39m (0 secs / 0.544 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 99 of 190[32m SUCCESS[39m (0 secs / 0.546 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 100 of 190[32m SUCCESS[39m (0 secs / 0.546 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 101 of 190[32m SUCCESS[39m (0 secs / 0.552 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 102 of 190[32m SUCCESS[39m (0 secs / 0.552 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 103 of 190[32m SUCCESS[39m (0 secs / 0.553 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 104 of 190[32m SUCCESS[39m (0 secs / 0.553 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 105 of 190[32m SUCCESS[39m (0 secs / 0.569 secs)
+[33m18 11 2026 23:14:48.582:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:48.583:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:48.584:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:48.584:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:48.585:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:48.586:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:48.587:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[33m18 11 2026 23:14:48.587:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 106 of 190[32m SUCCESS[39m (0 secs / 0.598 secs)
+[33m18 11 2026 23:14:48.616:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:48.617:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:48.617:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:48.617:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:48.618:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:48.620:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:48.621:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[33m18 11 2026 23:14:48.621:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[33m18 11 2026 23:14:48.998:WARN [web-server]: [39m404: /img/teclado.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 107 of 190[32m SUCCESS[39m (0 secs / 1 sec)
+[33m18 11 2026 23:14:49.017:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:49.018:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:49.018:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:49.018:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:49.018:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:49.019:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:49.019:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[33m18 11 2026 23:14:49.020:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 108 of 190[32m SUCCESS[39m (0 secs / 1.091 secs)
+[33m18 11 2026 23:14:49.107:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:49.108:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:49.108:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:49.108:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:49.108:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:49.108:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:49.109:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[33m18 11 2026 23:14:49.109:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 109 of 190[32m SUCCESS[39m (0 secs / 1.112 secs)
+[33m18 11 2026 23:14:49.129:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:49.129:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:49.129:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:49.130:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:49.130:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:49.130:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:49.130:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[33m18 11 2026 23:14:49.132:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 110 of 190[32m SUCCESS[39m (0 secs / 1.123 secs)
+[33m18 11 2026 23:14:49.139:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:49.139:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:49.140:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:49.140:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:49.140:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:49.140:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:49.140:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 111 of 190[32m SUCCESS[39m (0 secs / 1.131 secs)
+[33m18 11 2026 23:14:49.147:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:49.147:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:49.147:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:49.148:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:49.148:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:49.148:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:49.148:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[33m18 11 2026 23:14:49.149:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 112 of 190[32m SUCCESS[39m (0 secs / 1.143 secs)
+[33m18 11 2026 23:14:49.160:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:49.160:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:49.161:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:49.161:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:49.161:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:49.161:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:49.162:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[33m18 11 2026 23:14:49.162:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 113 of 190[32m SUCCESS[39m (0 secs / 1.484 secs)
+[33m18 11 2026 23:14:49.504:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:49.504:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:49.504:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:49.505:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:49.505:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:49.505:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:49.506:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[33m18 11 2026 23:14:49.506:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 114 of 190[32m SUCCESS[39m (0 secs / 1.648 secs)
+[33m18 11 2026 23:14:49.666:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:49.667:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:49.667:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:49.667:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:49.667:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:49.668:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:49.668:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[33m18 11 2026 23:14:49.669:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 115 of 190[32m SUCCESS[39m (0 secs / 1.692 secs)
+[33m18 11 2026 23:14:49.715:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:49.715:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:49.715:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:49.715:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:49.715:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:49.715:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:49.716:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[33m18 11 2026 23:14:49.716:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 116 of 190[32m SUCCESS[39m (0 secs / 1.72 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 117 of 190[32m SUCCESS[39m (0 secs / 1.732 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 118 of 190[32m SUCCESS[39m (0 secs / 1.734 secs)
+[33m18 11 2026 23:14:49.755:WARN [web-server]: [39m404: /img/pc.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 119 of 190[32m SUCCESS[39m (0 secs / 1.741 secs)
+[33m18 11 2026 23:14:49.764:WARN [web-server]: [39m404: /img/pc.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 120 of 190[32m SUCCESS[39m (0 secs / 1.746 secs)
+[33m18 11 2026 23:14:49.771:WARN [web-server]: [39m404: /img/pc.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 121 of 190[32m SUCCESS[39m (0 secs / 1.811 secs)
+[33m18 11 2026 23:14:49.835:WARN [web-server]: [39m404: /img/pc.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 122 of 190[32m SUCCESS[39m (0 secs / 1.872 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 123 of 190[32m SUCCESS[39m (0 secs / 1.874 secs)
+[33m18 11 2026 23:14:49.900:WARN [web-server]: [39m404: /img/pc.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 124 of 190[32m SUCCESS[39m (0 secs / 1.879 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 125 of 190[32m SUCCESS[39m (0 secs / 1.892 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 126 of 190[32m SUCCESS[39m (0 secs / 1.894 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 127 of 190[32m SUCCESS[39m (0 secs / 1.9 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 128 of 190[32m SUCCESS[39m (0 secs / 1.908 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 129 of 190[32m SUCCESS[39m (0 secs / 1.919 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 130 of 190[32m SUCCESS[39m (0 secs / 1.921 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 131 of 190[32m SUCCESS[39m (0 secs / 1.936 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 132 of 190[32m SUCCESS[39m (0 secs / 1.94 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 133 of 190[32m SUCCESS[39m (0 secs / 1.957 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 134 of 190[32m SUCCESS[39m (0 secs / 2.021 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 135 of 190[32m SUCCESS[39m (0 secs / 2.027 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 136 of 190[32m SUCCESS[39m (0 secs / 2.04 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 137 of 190[32m SUCCESS[39m (0 secs / 2.325 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 138 of 190[32m SUCCESS[39m (0 secs / 2.585 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 139 of 190[32m SUCCESS[39m (0 secs / 2.841 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 140 of 190[32m SUCCESS[39m (0 secs / 3.02 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 141 of 190[32m SUCCESS[39m (0 secs / 3.208 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 142 of 190[32m SUCCESS[39m (0 secs / 3.463 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 143 of 190[32m SUCCESS[39m (0 secs / 3.467 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 144 of 190[32m SUCCESS[39m (0 secs / 3.478 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 145 of 190[32m SUCCESS[39m (0 secs / 3.481 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 146 of 190[32m SUCCESS[39m (0 secs / 3.483 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 147 of 190[32m SUCCESS[39m (0 secs / 3.485 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 148 of 190[32m SUCCESS[39m (0 secs / 3.487 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 149 of 190[32m SUCCESS[39m (0 secs / 3.488 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 150 of 190[32m SUCCESS[39m (0 secs / 3.498 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 151 of 190[32m SUCCESS[39m (0 secs / 3.499 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 152 of 190[32m SUCCESS[39m (0 secs / 3.5 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 153 of 190[32m SUCCESS[39m (0 secs / 3.514 secs)
+[33m18 11 2026 23:14:51.550:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:51.550:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:51.551:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:51.551:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 154 of 190[32m SUCCESS[39m (0 secs / 3.518 secs)
+[33m18 11 2026 23:14:51.558:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:51.559:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:51.559:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:51.559:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 155 of 190[32m SUCCESS[39m (0 secs / 3.529 secs)
+[33m18 11 2026 23:14:51.577:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 156 of 190[32m SUCCESS[39m (0 secs / 3.549 secs)
+[33m18 11 2026 23:14:51.587:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 157 of 190[32m SUCCESS[39m (0 secs / 3.651 secs)
+[33m18 11 2026 23:14:51.689:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 158 of 190[32m SUCCESS[39m (0 secs / 3.822 secs)
+[33m18 11 2026 23:14:51.866:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 159 of 190[32m SUCCESS[39m (0 secs / 4.003 secs)
+[33m18 11 2026 23:14:52.046:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 160 of 190[32m SUCCESS[39m (0 secs / 4.18 secs)
+[33m18 11 2026 23:14:52.223:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 161 of 190[32m SUCCESS[39m (0 secs / 4.41 secs)
+[33m18 11 2026 23:14:52.453:WARN [web-server]: [39m404: /img/logo_Lv_Up.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 162 of 190[32m SUCCESS[39m (0 secs / 4.579 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 163 of 190[32m SUCCESS[39m (0 secs / 4.593 secs)
+[33m18 11 2026 23:14:52.635:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:52.635:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:52.635:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 164 of 190[32m SUCCESS[39m (0 secs / 4.598 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 165 of 190[32m SUCCESS[39m (0 secs / 4.6 secs)
+[33m18 11 2026 23:14:52.643:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:52.644:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:52.644:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 166 of 190[32m SUCCESS[39m (0 secs / 4.613 secs)
+[33m18 11 2026 23:14:52.661:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:52.661:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:52.662:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 167 of 190[32m SUCCESS[39m (0 secs / 4.618 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 168 of 190[32m SUCCESS[39m (0 secs / 4.631 secs)
+[33m18 11 2026 23:14:52.675:WARN [web-server]: [39m404: /img/catan.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 169 of 190[32m SUCCESS[39m (0 secs / 4.633 secs)
+[33m18 11 2026 23:14:52.679:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 170 of 190[32m SUCCESS[39m (0 secs / 4.635 secs)
+[33m18 11 2026 23:14:52.681:WARN [web-server]: [39m404: /img/catan.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 171 of 190[32m SUCCESS[39m (0 secs / 4.637 secs)
+[33m18 11 2026 23:14:52.686:WARN [web-server]: [39m404: /img/catan.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 172 of 190[32m SUCCESS[39m (0 secs / 4.646 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 173 of 190[32m SUCCESS[39m (0 secs / 4.648 secs)
+[33m18 11 2026 23:14:52.694:WARN [web-server]: [39m404: /img/gta_6.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 174 of 190[32m SUCCESS[39m (0 secs / 4.65 secs)
+[33m18 11 2026 23:14:52.696:WARN [web-server]: [39m404: /img/control_xbox.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 175 of 190[32m SUCCESS[39m (0 secs / 4.665 secs)
+[33m18 11 2026 23:14:52.712:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:52.713:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:52.713:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:52.713:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:52.713:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:52.713:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[33m18 11 2026 23:14:52.714:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 176 of 190[32m SUCCESS[39m (0 secs / 4.67 secs)
+[33m18 11 2026 23:14:52.718:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:52.725:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:52.726:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:52.726:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:52.726:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:52.726:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:52.726:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:52.727:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[33m18 11 2026 23:14:52.727:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 177 of 190[32m SUCCESS[39m (0 secs / 4.689 secs)
+[33m18 11 2026 23:14:52.743:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:52.743:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:52.743:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:52.743:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:52.743:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:52.744:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:52.744:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[33m18 11 2026 23:14:52.744:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 178 of 190[32m SUCCESS[39m (0 secs / 4.709 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 179 of 190[32m SUCCESS[39m (0 secs / 4.712 secs)
+[33m18 11 2026 23:14:52.761:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:52.762:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 180 of 190[32m SUCCESS[39m (0 secs / 4.714 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 181 of 190[32m SUCCESS[39m (0 secs / 4.716 secs)
+[33m18 11 2026 23:14:52.769:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:52.770:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:52.770:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:52.770:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:52.770:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:52.770:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:52.770:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[33m18 11 2026 23:14:52.771:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 182 of 190[32m SUCCESS[39m (0 secs / 4.725 secs)
+[33m18 11 2026 23:14:52.776:WARN [web-server]: [39m404: /img/catan.png
+[33m18 11 2026 23:14:52.779:WARN [web-server]: [39m404: /img/Carcassonne.webp
+[33m18 11 2026 23:14:52.780:WARN [web-server]: [39m404: /img/control_xbox.png
+[33m18 11 2026 23:14:52.780:WARN [web-server]: [39m404: /img/Aud%C3%ADfonos_HyperX_Cloud_II.jpg
+[33m18 11 2026 23:14:52.780:WARN [web-server]: [39m404: /img/gta_6.webp
+[33m18 11 2026 23:14:52.780:WARN [web-server]: [39m404: /img/PC_Gamer_ASUS_ROG_Strix.png
+[33m18 11 2026 23:14:52.780:WARN [web-server]: [39m404: /img/Silla_Gamer_Secretlab_Titan.webp
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 183 of 190[32m SUCCESS[39m (0 secs / 4.731 secs)
+[33m18 11 2026 23:14:52.782:WARN [web-server]: [39m404: /img/Mouse_Logitech_G502_HERO.png
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 184 of 190[32m SUCCESS[39m (0 secs / 4.753 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 185 of 190[32m SUCCESS[39m (0 secs / 4.769 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 186 of 190[32m SUCCESS[39m (0 secs / 5.168 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 187 of 190[32m SUCCESS[39m (0 secs / 5.618 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 188 of 190[32m SUCCESS[39m (0 secs / 6.119 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 189 of 190[32m SUCCESS[39m (0 secs / 6.6 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 190 of 190[32m SUCCESS[39m (0 secs / 7.058 secs)
+[1A[2KEdge 157.0.0.0 (Windows 10): Executed 190 of 190[32m SUCCESS[39m (7.133 secs / 7.058 secs)
 [32mTOTAL: 190 SUCCESS[39m
