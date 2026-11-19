@@ -168,7 +168,7 @@ La columna *Etapa* indica desde qué versión está implementado cada requisito.
 - **Contador del carrito:** cuenta unidades, no líneas. Dos productos con cantidades 2 y 3 muestran 5.
 - **Stock:** el stock 0 se considera agotado. `ms-carrito` consulta `ms-productos` antes de agregar o modificar un ítem y responde `409` si no alcanza.
 - **Roles:** `CLIENTE` por defecto en el registro público; `ADMIN` solo puede ser asignado por otro administrador o por la siembra inicial.
-- **Cuenta administradora:** `admin@levelup.cl` / `Admin123!`, creada automáticamente si no existe.
+- **Cuentas iniciales:** `admin@levelup.cl` / `Admin123!` (ADMIN) y `cliente.pagos@levelup.cl` / `Cliente123!` (CLIENTE). Ambas se crean automáticamente si no existen, sin depender del respaldo `.sql`.
 - **Pagos:** se aprueban salvo que la tarjeta termine en `0000` o `1111`. Una orden no puede tener dos pagos aprobados.
 - **Datos de tarjeta:** solo se persisten los últimos cuatro dígitos.
 - **Token:** expira a los 120 minutos por defecto; el frontend cierra la sesión ante un `401`.

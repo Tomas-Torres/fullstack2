@@ -120,18 +120,30 @@ Abrir **http://localhost:5173**. Vite no usa proxy: el navegador llama directame
 
 ## Cuentas, cupones y tarjetas de prueba
 
+### Copiar y pegar para la demo en vivo
+
+```text
+===== ADMIN (CRUD de productos y usuarios) =====
+Correo: admin@levelup.cl
+Clave:  Admin123!
+Rol:    ADMIN
+
+===== CLIENTE NORMAL (carrito, cupones y pagos) =====
+Correo: cliente.pagos@levelup.cl
+Clave:  Cliente123!
+Rol:    CLIENTE
+```
+
+**Ambas cuentas se crean automáticamente** al iniciar `ms-login`, incluso en una base de datos vacía. No hay que registrar nada a mano ni importar el respaldo.
+
 | Dato | Valor |
 |---|---|
-| Administrador | `admin@levelup.cl` / `Admin123!` |
-| Cliente de prueba creado a mano | `cliente.pagos@levelup.cl` / `Cliente123!` |
 | Cupón 10% | `LEVELUP10` |
 | Cupón 20% | `GAMER20` |
 | Tarjeta aprobada | cualquier número que **no** termine en `0000` ni `1111`, por ejemplo `4111 1111 1111 4444` |
 | Fondos insuficientes | terminación `0000` |
 | Tarjeta rechazada | terminación `1111` |
 | Transferencia | se aprueba sin número de tarjeta |
-
-El administrador se crea automáticamente al iniciar `ms-login` si no existe. Los clientes se crean desde la página de Registro o desde la colección Postman.
 
 ---
 
@@ -268,38 +280,42 @@ Cada petición incluye pruebas automáticas (`pm.test`) de código HTTP y conten
 
 ## Despliegue en AWS EC2 (t3.micro)
 
-La instancia t3.micro tiene 1 GB de RAM, por lo que el proyecto incluye un swap de 1 GB y límites de memoria por contenedor.
+**URL pública de la demo:** **http://184.72.249.146/**
 
-1. Crear una instancia **t3.micro** con Amazon Linux 2023.
-2. En el Security Group, abrir los puertos **22** (SSH), **80** (frontend), **8081**, **8082**, **8083** y **8085** (APIs). MySQL **no** se publica.
-3. Conectarse por SSH y copiar el proyecto (git clone o `scp`).
-4. Preparar la instancia una sola vez:
+La guía completa está en [GUIA_DESPLIEGUE_EC2.md](GUIA_DESPLIEGUE_EC2.md). Resumen:
 
-```bash
-cd backend
-sudo bash scripts/preparar-ec2.sh
-```
-
-5. Configurar variables:
+1. Instancia **t3.micro** con Amazon Linux 2023 y Elastic IP `184.72.249.146`.
+2. Security Group (inbound): **80, 8081, 8082, 8083 y 8085** desde `0.0.0.0/0`. MySQL **3306 no se abre**. SSH 22 solo desde tu IP (opcional).
+3. Conectar con **EC2 → Instancia → Connect → Session Manager** (no se usa la llave `.pem`). Requiere un rol IAM con `AmazonSSMManagedInstanceCore`.
+4. Instalar Docker, Compose y Git, o ejecutar `sudo bash backend/scripts/preparar-ec2.sh`, que además crea un swap de 1 GB para la t3.micro.
+5. Clonar y configurar desde la **raíz** del repo:
 
 ```bash
-cp .env.prod.example .env
+cd ~
+git clone https://github.com/Tomas-Torres/fullstack2.git
+cd fullstack2
+cp .env.example .env
 nano .env
-# PUBLIC_HOST = IP pública o dominio de la instancia
-# MYSQL_ROOT_PASSWORD y JWT_SECRET con valores propios
+# PUBLIC_HOST=184.72.249.146
 ```
 
-6. Desplegar:
+6. Levantar todo con un solo comando:
 
 ```bash
-bash scripts/desplegar.sh
+docker compose up -d --build
 ```
 
-El script compila las imágenes, levanta MySQL, los cuatro microservicios y el frontend, y verifica el health de cada API. Al terminar muestra las URLs públicas.
+7. Verificar:
 
-> Si el frontend se compila en otra máquina, ejecutar
-> `VITE_API_LOGIN=http://IP:8081 VITE_API_PRODUCTOS=http://IP:8082 VITE_API_CARRITO=http://IP:8083 VITE_API_PAGOS=http://IP:8085 npm run build`
-> para que las URLs queden dentro del bundle.
+```bash
+docker compose ps
+curl http://localhost:8081/actuator/health
+curl http://localhost:8082/actuator/health
+curl http://localhost:8083/actuator/health
+curl http://localhost:8085/actuator/health
+```
+
+> El `PUBLIC_HOST` del `.env` debe ser la IP elástica, no `localhost`: el frontend compila las URLs de los cuatro microservicios dentro del bundle. Si cambias la IP, edita `.env` y vuelve a ejecutar `docker compose up -d --build`.
 
 ---
 
@@ -316,8 +332,9 @@ docker exec -i levelup-mysql mysql -uroot -p < entregables/backup_levelup.sql
 Para generar uno nuevo:
 
 ```bash
-docker exec levelup-mysql sh -c \
-  'mysqldump -uroot -p --databases db_login db_productos db_carrito db_pagos --single-transaction' \
+docker exec -e MYSQL_PWD=levelup levelup-mysql \
+  mysqldump -ulevelup --databases db_login db_productos db_carrito db_pagos \
+  --single-transaction --no-tablespaces --routines --triggers \
   > entregables/backup_levelup.sql
 ```
 
@@ -327,12 +344,21 @@ docker exec levelup-mysql sh -c \
 
 ```
 fullstack2/
+├── docker-compose.yml             → stack completo (se ejecuta desde la raíz)
+├── .env.example                   → PUBLIC_HOST=184.72.249.146 y variables
+├── .gitignore                     → ignora el .env real
+├── GUIA_DESPLIEGUE_EC2.md         → guía adaptada a Session Manager
 ├── backend/
 │   ├── comun/                     → código compartido (JWT, errores, seguridad)
 │   ├── ms-login/                  → autenticación y usuarios
+│   │   ├── Dockerfile             → imagen del microservicio
+│   │   └── src/.../DataInitializer.java → siembra admin + cliente
 │   ├── ms-productos/              → catálogo, categorías y stock
+│   │   └── Dockerfile             → imagen del microservicio
 │   ├── ms-carrito/                → carrito y cupones
+│   │   └── Dockerfile             → imagen del microservicio
 │   ├── ms-pagos/                  → simulación de pagos
+│   │   └── Dockerfile             → imagen del microservicio
 │   ├── db/init.sql                → creación de las cuatro bases
 │   ├── Dockerfile                 → imagen multi-stage reutilizable
 │   ├── docker-compose.yml         → MySQL para desarrollo
@@ -361,7 +387,8 @@ fullstack2/
 │   └── karma.pp.cjs               → preprocesador esbuild + cobertura
 ├── entregables/
 │   ├── backup_levelup.sql
-│   └── LevelUp_Gamer.postman_collection.json
+│   ├── LevelUp_Gamer.postman_collection.json
+│   └── evidencia/                 → capturas y salidas de ejecución
 ├── ERS.md
 ├── Informe_Cobertura_Testing.md
 └── README.md
@@ -386,12 +413,13 @@ La carpeta `entregables/evidencia/` contiene:
 - `ejecucion-npm-test.txt`: resultado de las 190 pruebas del frontend.
 - `ejecucion-test-coverage.txt`: resumen de cobertura de Istanbul.
 - `ejecucion-mvn-test.txt`: salida de las 192 pruebas del backend.
-- `verificacion-backend.txt`: health de los cuatro servicios y flujo real login → catálogo → carrito → cupón → pago.
+- `verificacion-backend.txt`: health de los cuatro servicios, login real de admin y cliente, y flujo catálogo → carrito → cupón → pago.
 - `cobertura-resumen.png`: captura del reporte HTML de cobertura.
 - `demo-frontend.png`: captura de la tienda servida por Nginx.
 
 ## Documentación
 
+- [GUIA_DESPLIEGUE_EC2.md](GUIA_DESPLIEGUE_EC2.md): despliegue en la EC2 con Session Manager y la IP `184.72.249.146`.
 - [ERS.md](ERS.md): especificación de requisitos, arquitectura, endpoints y requisitos no funcionales.
 - [Informe_Cobertura_Testing.md](Informe_Cobertura_Testing.md): metodología, resultados y anexos de configuración de las pruebas.
 

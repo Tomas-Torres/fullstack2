@@ -52,7 +52,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,_binary '','Santiago','admin@levelup.cl','2026-11-14 08:29:10.711330','Administrador','$2a$10$1awt42ItyjU68lMQLy763uT6/.u180Ov9VARORJjvCsuHgUhhlrle','metropolitana','ADMIN',NULL),(3,_binary '','Santiago','cliente.pagos@levelup.cl','2026-11-17 04:40:33.865349','Cliente Pagos','$2a$10$R12l6Fl5l2FgIiXFsuRzK.2fdyFTGuFgcBbQDfondBPqJ8e49Bxcy','Metropolitana','CLIENTE','912345678');
+INSERT INTO `usuarios` VALUES (1,_binary '','Santiago','admin@levelup.cl','2026-11-19 00:24:38.717374','Administrador','$2a$10$qy5rnBaJco/bnpI.BK2.k.4LfjjpNQ/sxbWeMR.zcFnmRDjMyG1gq','metropolitana','ADMIN',NULL),(2,_binary '','Santiago','verificacion20261118213115@levelup.cl','2026-11-19 00:31:15.403288','Verificacion Final','$2a$10$fmHH6QIj/zluZ0JL0TO6JuSiigfaD7tkz9umD6.OyPmCvM4puPDd6','metropolitana','CLIENTE','912345678'),(3,_binary '','Santiago','cliente.pagos@levelup.cl','2026-11-19 02:09:30.181910','Cliente Pagos','$2a$10$ZKzuvlA3VyCLYNIXExzUj.5E/p3kZw2iH4jpXVBOLNMIJTwZgT6i2','metropolitana','CLIENTE',NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,7 +113,7 @@ CREATE TABLE `productos` (
   PRIMARY KEY (`id`),
   KEY `FK2fwq10nwymfv7fumctxt9vpgb` (`categoria_id`),
   CONSTRAINT `FK2fwq10nwymfv7fumctxt9vpgb` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +122,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,_binary '','3-4 jugadores',0,'/img/catan.png','Catan',29990,10,1),(2,_binary '','2-5 jugadores',15,'/img/Carcassonne.webp','Carcassonne',24990,10,1),(3,_binary '','Inalámbrico',0,'/img/control_xbox.png','Controlador Xbox Series X',59990,10,2),(4,_binary '','Micrófono desmontable',20,'/img/Audífonos_HyperX_Cloud_II.jpg','Audífonos HyperX Cloud II',79990,10,2),(5,_binary '','Sin lector de discos',0,'/img/gta_6.webp','GTA6 (Versión Digital)',429990,0,3),(6,_binary '','Alto rendimiento',0,'/img/PC_Gamer_ASUS_ROG_Strix.png','PC Gamer ASUS ROG Strix',1299990,5,4),(7,_binary '','Soporte ergonómico',0,'/img/Silla_Gamer_Secretlab_Titan.webp','Silla Gamer Secretlab Titan',349990,5,5),(8,_binary '','Sensor de alta precisión',10,'/img/Mouse_Logitech_G502_HERO.png','Mouse Logitech G502 HERO',49990,10,6),(9,_binary '\0','Inalámbrico',10,'/img/nuevo.png','Producto de prueba',19990,4,6);
+INSERT INTO `productos` VALUES (1,_binary '','3-4 jugadores',0,'/img/catan.png','Catan',29990,10,1),(2,_binary '','2-5 jugadores',15,'/img/Carcassonne.webp','Carcassonne',24990,10,1),(3,_binary '','Inalámbrico',0,'/img/control_xbox.png','Controlador Xbox Series X',59990,10,2),(4,_binary '','Micrófono desmontable',20,'/img/Audífonos_HyperX_Cloud_II.jpg','Audífonos HyperX Cloud II',79990,10,2),(5,_binary '','Sin lector de discos',0,'/img/gta_6.webp','GTA6 (Versión Digital)',429990,0,3),(6,_binary '','Alto rendimiento',0,'/img/PC_Gamer_ASUS_ROG_Strix.png','PC Gamer ASUS ROG Strix',1299990,5,4),(7,_binary '','Soporte ergonómico',0,'/img/Silla_Gamer_Secretlab_Titan.webp','Silla Gamer Secretlab Titan',349990,5,5),(8,_binary '','Sensor de alta precisión',10,'/img/Mouse_Logitech_G502_HERO.png','Mouse Logitech G502 HERO',49990,10,6);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +152,7 @@ CREATE TABLE `carritos` (
   `usuario_id` bigint NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_carritos_usuario` (`usuario_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,7 +161,7 @@ CREATE TABLE `carritos` (
 
 LOCK TABLES `carritos` WRITE;
 /*!40000 ALTER TABLE `carritos` DISABLE KEYS */;
-INSERT INTO `carritos` VALUES (1,NULL,'2026-11-17 07:37:11.347260',3);
+INSERT INTO `carritos` VALUES (1,'LEVELUP10','2026-11-19 00:31:16.213923',2),(2,'LEVELUP10','2026-11-19 02:13:43.526861',3);
 /*!40000 ALTER TABLE `carritos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,7 +183,7 @@ CREATE TABLE `items_carrito` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_items_carrito_producto` (`carrito_id`,`producto_id`),
   CONSTRAINT `FK9qal2jfqtv8ek5uelns6o4cn1` FOREIGN KEY (`carrito_id`) REFERENCES `carritos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,6 +192,7 @@ CREATE TABLE `items_carrito` (
 
 LOCK TABLES `items_carrito` WRITE;
 /*!40000 ALTER TABLE `items_carrito` DISABLE KEYS */;
+INSERT INTO `items_carrito` VALUES (1,1,'/img/catan.png','Catan',29990,1,1),(3,1,'/img/catan.png','Catan',29990,1,2);
 /*!40000 ALTER TABLE `items_carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,7 +228,7 @@ CREATE TABLE `pagos` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK2ntbia3wlj1nfbp1hb7pil83k` (`codigo_transaccion`),
   KEY `idx_pagos_orden` (`orden_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -236,6 +237,7 @@ CREATE TABLE `pagos` (
 
 LOCK TABLES `pagos` WRITE;
 /*!40000 ALTER TABLE `pagos` DISABLE KEYS */;
+INSERT INTO `pagos` VALUES (1,'e2eaa63d-62be-44eb-ae9a-b164971745e6','APROBADO','2026-11-19 00:31:16.709846','TARJETA_CREDITO',26991,NULL,20261118213116,'4444'),(2,'b094a4ae-6ab9-4f8a-aa31-1ed828aee365','APROBADO','2026-11-19 02:09:45.144045','TARJETA_CREDITO',26991,NULL,20261118230945,'4444'),(3,'80df4c8c-22b5-4269-bd30-e4330e82086b','APROBADO','2026-11-19 02:13:34.420964','TARJETA_CREDITO',53982,NULL,20261118231333,'4444'),(4,'cecf32ac-7057-4f4e-9ac7-534ddd96d0f2','APROBADO','2026-11-19 02:13:43.582689','TARJETA_CREDITO',26991,NULL,20261118231343,'4444');
 /*!40000 ALTER TABLE `pagos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,4 +254,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-11-17  7:57:33
+-- Dump completed on 2026-11-19  2:14:04

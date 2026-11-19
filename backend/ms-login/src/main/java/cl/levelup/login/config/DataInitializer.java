@@ -11,8 +11,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Crea el administrador inicial solo si no existe. No se cargan clientes
- * de prueba: las cuentas de cliente se crean por la API de registro.
+ * Crea las cuentas iniciales solo si no existen.
+ *
+ * Se siembran dos cuentas para que la demo en vivo funcione igual en local y en
+ * EC2 sin depender de importar un respaldo: el administrador y un cliente de
+ * prueba. Cada correo se verifica de forma independiente para que, si el admin
+ * ya existe, igual se cree el cliente.
  */
 @Component
 public class DataInitializer implements CommandLineRunner {
@@ -21,6 +25,8 @@ public class DataInitializer implements CommandLineRunner {
 
     private static final String CORREO_ADMIN = "admin@levelup.cl";
     private static final String PASSWORD_ADMIN = "Admin123!";
+    private static final String CORREO_CLIENTE = "cliente.pagos@levelup.cl";
+    private static final String PASSWORD_CLIENTE = "Cliente123!";
 
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
@@ -33,20 +39,28 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) {
-        if (usuarioRepository.existsByCorreoIgnoreCase(CORREO_ADMIN)) {
+        crearSiNoExiste(CORREO_ADMIN, "Administrador", PASSWORD_ADMIN,
+                Rol.ADMIN, "metropolitana", "Santiago");
+        crearSiNoExiste(CORREO_CLIENTE, "Cliente Pagos", PASSWORD_CLIENTE,
+                Rol.CLIENTE, "metropolitana", "Santiago");
+    }
+
+    private void crearSiNoExiste(String correo, String nombre, String password,
+                                 Rol rol, String region, String comuna) {
+        if (usuarioRepository.existsByCorreoIgnoreCase(correo)) {
             return;
         }
 
-        Usuario admin = new Usuario();
-        admin.setNombre("Administrador");
-        admin.setCorreo(CORREO_ADMIN);
-        admin.setPassword(passwordEncoder.encode(PASSWORD_ADMIN));
-        admin.setRegion("metropolitana");
-        admin.setComuna("Santiago");
-        admin.setRol(Rol.ADMIN);
-        admin.setActivo(true);
-        usuarioRepository.save(admin);
+        Usuario usuario = new Usuario();
+        usuario.setNombre(nombre);
+        usuario.setCorreo(correo);
+        usuario.setPassword(passwordEncoder.encode(password));
+        usuario.setRegion(region);
+        usuario.setComuna(comuna);
+        usuario.setRol(rol);
+        usuario.setActivo(true);
+        usuarioRepository.save(usuario);
 
-        log.info("Usuario ADMIN inicial creado: {}", CORREO_ADMIN);
+        log.info("Usuario {} inicial creado: {}", rol, correo);
     }
 }

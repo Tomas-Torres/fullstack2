@@ -89,11 +89,13 @@ class UsuariosApiTest {
                 .andExpect(jsonPath("$").isArray())
                 .andExpect(jsonPath("$[*].rol", hasItem("ADMIN")));
 
+        // Ahora ademas del cliente creado aqui se siembra cliente.pagos@levelup.cl
         mockMvc.perform(get("/api/usuarios").param("rol", "CLIENTE")
                         .header("Authorization", token(admin())))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()").value(1))
-                .andExpect(jsonPath("$[0].correo").value(cliente.getCorreo()));
+                .andExpect(jsonPath("$.length()").value(2))
+                .andExpect(jsonPath("$[*].correo", hasItem(cliente.getCorreo())))
+                .andExpect(jsonPath("$[*].correo", hasItem("cliente.pagos@levelup.cl")));
     }
 
     @Test

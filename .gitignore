@@ -1,0 +1,6 @@
+# Variables reales (el ejemplo si se versiona)
+.env
+
+# Archivos temporales y logs
+.tmp*
+*.log

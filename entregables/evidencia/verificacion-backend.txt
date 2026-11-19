@@ -1,14 +1,16 @@
-﻿VERIFICACION FINAL - 2026-11-18 21:31:14
+﻿VERIFICACION FINAL - 2026-11-18 23:13:43
+STACK: raiz fullstack2 (docker compose up -d --build)
 
-HEALTH 8081 -> UP (intento 0)
-HEALTH 8082 -> UP (intento 0)
-HEALTH 8083 -> UP (intento 0)
-HEALTH 8085 -> UP (intento 0)
+HEALTH 8081 -> UP
+HEALTH 8082 -> UP
+HEALTH 8083 -> UP
+HEALTH 8085 -> UP
 LOGIN ADMIN -> rol=ADMIN, token_len=233
+LOGIN CLIENTE -> rol=CLIENTE, token_len=257
 CATALOGO -> total=8, primero=Catan, precio=29990
-REGISTRO -> id=2, rol=CLIENTE
 CARRITO -> unidades=1, subtotal=29990, total=29990
 CUPON LEVELUP10 -> descuento=2999, total=26991
-PAGO -> estado=APROBADO, ultimosDigitos=4444, codigo=e2eaa63d-62be-44eb-ae9a-b164971745e6
+PAGO -> estado=APROBADO, ultimosDigitos=4444, codigo=cecf32ac-7057-4f4e-9ac7-534ddd96d0f2
+FRONTEND -> HTTP 200
 
-RESULTADO: TODOS LOS SERVICIOS RESPONDIERON CORRECTAMENTE
+RESULTADO: ADMIN Y CLIENTE AUTENTICAN; FLUJO COMPLETO CORRECTO
