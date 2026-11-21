@@ -4,3 +4,6 @@
 # Archivos temporales y logs
 .tmp*
 *.log
+
+# ZIP generado para la entrega (se entrega fuera del repo)
+*.zip
