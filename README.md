@@ -389,8 +389,11 @@ fullstack2/
 │   ├── backup_levelup.sql
 │   ├── LevelUp_Gamer.postman_collection.json
 │   └── evidencia/                 → capturas y salidas de ejecución
+├── Documentacion_APIs_Swagger.md
+├── Documento_APIs_e_Integracion.md
 ├── ERS.md
 ├── Informe_Cobertura_Testing.md
+├── Manual_Usuario.md
 └── README.md
 ```
 
@@ -421,6 +424,9 @@ La carpeta `entregables/evidencia/` contiene:
 
 - [GUIA_DESPLIEGUE_EC2.md](GUIA_DESPLIEGUE_EC2.md): despliegue en la EC2 con Session Manager y la IP `184.72.249.146`.
 - [ERS.md](ERS.md): especificación de requisitos, arquitectura, endpoints y requisitos no funcionales.
+- [Manual_Usuario.md](Manual_Usuario.md): acceso, flujo del cliente, panel admin y demo rápida.
+- [Documentacion_APIs_Swagger.md](Documentacion_APIs_Swagger.md): URLs, autorización JWT y ejemplos por microservicio.
+- [Documento_APIs_e_Integracion.md](Documento_APIs_e_Integracion.md): variables de entorno, flujo de datos, endpoints y seguridad.
 - [Informe_Cobertura_Testing.md](Informe_Cobertura_Testing.md): metodología, resultados y anexos de configuración de las pruebas.
 
 ## Autor

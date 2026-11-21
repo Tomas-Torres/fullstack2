@@ -500,3 +500,34 @@ Branches     : 86.03% ( 462/537 )
 Functions    : 94.24% ( 180/191 )
 Lines        : 94.86% ( 665/701 )
 ```
+
+### Anexo E: ejecución y cobertura del backend
+
+Además del testeo unitario del frontend, el backend incorpora pruebas con **JUnit 5, MockMvc y JaCoCo**. La pauta de la asignatura exige cobertura para el frontend, pero se deja registrado el resultado backend como evidencia complementaria de la integración.
+
+| Módulo | Pruebas | Cobertura de líneas (JaCoCo) |
+|---|---:|---:|
+| `ms-login` | 62 | No reportada en este módulo |
+| `ms-productos` | 57 | No reportada en este módulo |
+| `ms-carrito` | 42 | 85,11% |
+| `ms-pagos` | 31 | 98,37% |
+| **Total** | **192** | — |
+
+Comandos utilizados:
+
+| Comando | Descripción |
+|---|---|
+| `./mvnw test` | Ejecuta las 192 pruebas de los cuatro microservicios |
+| `./mvnw -pl ms-carrito -am verify` | Genera el reporte JaCoCo de `ms-carrito` |
+| `./mvnw -pl ms-pagos -am verify` | Genera el reporte JaCoCo de `ms-pagos` |
+
+Los reportes HTML quedan en:
+
+```text
+backend/ms-carrito/target/site/jacoco/index.html
+backend/ms-pagos/target/site/jacoco/index.html
+```
+
+La salida completa de ejecución está en `entregables/evidencia/ejecucion-mvn-test.txt` y `entregables/evidencia/ejecucion-mvn-ms-login.txt`.
+
+**Resultado:** 192 pruebas backend, 0 fallos. `ms-pagos` supera el 98% de líneas cubiertas y `ms-carrito` supera el 85%, incluyendo reglas de cupones, validación de stock y respuestas `503`.
