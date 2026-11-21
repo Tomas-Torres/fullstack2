@@ -304,9 +304,6 @@ docker exec -i levelup-mysql mysql -uroot -p < entregables/backup_levelup.sql
 | Archivo | Contenido |
 |---|---|
 | `entregables/evidencia/verificacion-backend.txt` | Health, login admin/cliente, carrito, cupón y pago reales |
-| `entregables/evidencia/ejecucion-mvn-test.txt` | 192 pruebas backend |
-| `entregables/evidencia/ejecucion-npm-test.txt` | 190 pruebas frontend |
-| `entregables/evidencia/ejecucion-test-coverage.txt` | Cobertura frontend |
-| `entregables/evidencia/demo-frontend.png` | Captura de la tienda |
+| `entregables/evidencia/cobertura-resumen.png` | Captura del reporte de cobertura |
 | [Informe_Cobertura_Testing.md](Informe_Cobertura_Testing.md) | Resultado de pruebas y cobertura |
 | [Documentacion_APIs_Swagger.md](Documentacion_APIs_Swagger.md) | Guía de Swagger |

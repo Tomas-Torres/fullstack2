@@ -253,21 +253,14 @@ El resultado supera el umbral por **34,86 puntos porcentuales**. Las 190 pruebas
 
 - `coverage/coverage-final.json`: datos crudos de instrumentación.
 - `coverage/html/index.html`: reporte HTML navegable.
-- `entregables/evidencia/ejecucion-npm-test.txt`: salida de `npm test`.
-- `entregables/evidencia/ejecucion-test-coverage.txt`: salida de `npm run test:coverage`.
 - `entregables/evidencia/verificacion-backend.txt`: health y respuestas de los cuatro microservicios.
 - `entregables/evidencia/cobertura-resumen.png`: captura del reporte HTML.
-- `entregables/evidencia/demo-frontend.png`: captura de la tienda servida por Nginx.
 
 ### 9.2 Capturas
 
 **Resumen de cobertura**
 
 ![Resumen de cobertura](entregables/evidencia/cobertura-resumen.png)
-
-**Tienda en ejecución (frontend + microservicios)**
-
-![Demo frontend](entregables/evidencia/demo-frontend.png)
 
 ## 10. Conclusión
 
@@ -528,6 +521,6 @@ backend/ms-carrito/target/site/jacoco/index.html
 backend/ms-pagos/target/site/jacoco/index.html
 ```
 
-La salida completa de ejecución está en `entregables/evidencia/ejecucion-mvn-test.txt` y `entregables/evidencia/ejecucion-mvn-ms-login.txt`.
+El flujo verificado de extremo a extremo está registrado en `entregables/evidencia/verificacion-backend.txt`.
 
 **Resultado:** 192 pruebas backend, 0 fallos. `ms-pagos` supera el 98% de líneas cubiertas y `ms-carrito` supera el 85%, incluyendo reglas de cupones, validación de stock y respuestas `503`.

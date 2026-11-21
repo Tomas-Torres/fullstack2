@@ -182,7 +182,7 @@ El administrador puede consultar el historial completo de pagos y filtrar por es
 
 ## 6. Evidencias y documentación relacionada
 
-- Captura general de la tienda: `entregables/evidencia/demo-frontend.png`.
+- Resumen de cobertura: `entregables/evidencia/cobertura-resumen.png`.
 - Flujo real verificado: `entregables/evidencia/verificacion-backend.txt`.
 - Colección Postman: `entregables/LevelUp_Gamer.postman_collection.json`.
 - Documentación de Swagger: [Documentacion_APIs_Swagger.md](Documentacion_APIs_Swagger.md).

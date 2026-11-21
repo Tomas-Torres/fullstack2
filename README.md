@@ -413,12 +413,10 @@ fullstack2/
 
 La carpeta `entregables/evidencia/` contiene:
 
-- `ejecucion-npm-test.txt`: resultado de las 190 pruebas del frontend.
-- `ejecucion-test-coverage.txt`: resumen de cobertura de Istanbul.
-- `ejecucion-mvn-test.txt`: salida de las 192 pruebas del backend.
 - `verificacion-backend.txt`: health de los cuatro servicios, login real de admin y cliente, y flujo catálogo → carrito → cupón → pago.
 - `cobertura-resumen.png`: captura del reporte HTML de cobertura.
-- `demo-frontend.png`: captura de la tienda servida por Nginx.
+
+Los resultados detallados de pruebas están en [Informe_Cobertura_Testing.md](Informe_Cobertura_Testing.md).
 
 ## Documentación
 
